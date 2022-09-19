@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
-import BookIcon from "../resources/Icons/BookIcon";
-import CommentIcon from "../resources/Icons/CommentIcon";
-import DateIcon from "../resources/Icons/DateIcon";
-import ViewIcon from "../resources/Icons/ViewIcon";
+import BookIcon from "../resources/icons/BookIcon";
+import CommentIcon from "../resources/icons/CommentIcon";
+import DateIcon from "../resources/icons/DateIcon";
+import ViewIcon from "../resources/icons/ViewIcon";
 
 const BlogPost = () => {
   return (
