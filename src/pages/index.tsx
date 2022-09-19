@@ -37,6 +37,7 @@ const Home: NextPage = () => {
           </Navbar>
           <div className="grid grid-cols-6 gap-8 mt-2">
             <div className="col-span-4 flex flex-col gap-6">
+              <BlogPost />
             </div>
             <div>
               
