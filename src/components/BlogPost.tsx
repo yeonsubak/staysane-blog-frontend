@@ -7,11 +7,11 @@ import ViewIcon from "../resources/Icons/ViewIcon";
 
 const BlogPost = () => {
   return (
-    <div className="mt-2 flex h-[326px] w-[564px] flex-col gap-6 bg-white px-16 py-9 shadow-lg flex-initial">
+    <div className="mt-2 flex h-[326px] md:min-w-[520px] flex-col gap-6 bg-white px-10 py-9 shadow-lg">
       <div className="flex flex-row">
         <div className="imageBox h-24 w-24 shrink-0 bg-teal-800"></div>
         <div className="ml-3">
-          <h2 className="h-20  text-2xl font-semibold keep-all">
+          <h2 className="keep-all  h-20 text-2xl font-semibold">
             젠킨스로 CI/CD 파이프라인 구축하기 (3)
           </h2>
           <div className="postInfoBox flex flex-row gap-4 text-xs">

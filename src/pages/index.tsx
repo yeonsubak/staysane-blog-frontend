@@ -1,7 +1,8 @@
 import { Flowbite, Navbar } from "flowbite-react";
 import type { NextPage } from "next";
 import BlogPost from "../components/BlogPost";
-import StaysaneLogo from "../components/StaysaneLogo";
+import PlaylistWidget from "../components/PlaylistWidget";
+import StaysaneLogo from "../resources/Img/StaysaneLogo";
 
 const Home: NextPage = () => {
   return (
@@ -35,9 +36,12 @@ const Home: NextPage = () => {
               </Navbar.Link>
             </Navbar.Collapse>
           </Navbar>
-          <div className="grid grid-cols-6 gap-8 mt-2">
-            <div className="col-span-4 flex flex-col gap-6">
+          <div className="flex flex-row gap-8 mt-2">
+            <div className="basis-4/6 flex flex-col gap-6">
               <BlogPost />
+            </div>
+            <div className="hidden lg:flex">
+              <PlaylistWidget />
             </div>
             <div>
               
