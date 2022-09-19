@@ -1,4 +1,8 @@
 import React from "react";
+import BookIcon from "../resources/Icons/BookIcon";
+import CommentIcon from "../resources/Icons/CommentIcon";
+import DateIcon from "../resources/Icons/DateIcon";
+import ViewIcon from "../resources/Icons/ViewIcon";
 
 const BlogPost = () => {
   return (
@@ -10,10 +14,20 @@ const BlogPost = () => {
             젠킨스로 CI/CD 파이프라인 구축하기 (3)
           </h2>
           <div className="postInfoBox flex flex-row gap-4 text-xs">
-            <span className="">2022년 9월 19일</span>
-            <span className="">2분 분량</span>
-            <span className="">2</span>
-            <span className="">365</span>
+            <div className="flex felx-row items-center gap-1">
+              <DateIcon />
+              2022년 9월 19일
+            </div>
+            <div className="flex felx-row items-center gap-1">
+              <BookIcon />
+              2분 분량
+            </div>
+            <div className="flex felx-row items-center gap-1">
+              <CommentIcon />
+              2</div>
+            <div className="flex felx-row items-center gap-1">
+              <ViewIcon />
+              365</div>
           </div>
         </div>
       </div>

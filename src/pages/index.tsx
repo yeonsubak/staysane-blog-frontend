@@ -36,11 +36,11 @@ const Home: NextPage = () => {
               </Navbar.Link>
             </Navbar.Collapse>
           </Navbar>
-          <div className="grid grid-cols-5 gap-4 mt-2 h-screen">
-            <div className="col-span-3">
+          <div className="grid grid-cols-8 gap-8 mt-2 h-screen">
+            <div className="col-span-5">
               <BlogPost />
             </div>
-            <div className="col-span-2">Div2</div>
+            <div>Div2</div>
           </div>
         </div>
 
