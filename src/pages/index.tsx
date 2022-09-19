@@ -1,5 +1,4 @@
 import { Flowbite, Navbar } from "flowbite-react";
-import { NavbarToggle } from "flowbite-react/lib/esm/components/Navbar/NavbarToggle";
 import type { NextPage } from "next";
 import BlogPost from "../components/BlogPost";
 import StaysaneLogo from "../components/StaysaneLogo";
@@ -36,11 +35,12 @@ const Home: NextPage = () => {
               </Navbar.Link>
             </Navbar.Collapse>
           </Navbar>
-          <div className="grid grid-cols-8 gap-8 mt-2 h-screen">
-            <div className="col-span-5">
-              <BlogPost />
+          <div className="grid grid-cols-6 gap-8 mt-2">
+            <div className="col-span-4 flex flex-col gap-6">
             </div>
-            <div>Div2</div>
+            <div>
+              
+            </div>
           </div>
         </div>
 

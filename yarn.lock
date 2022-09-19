@@ -184,7 +184,7 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-12.3.0.tgz#85f971fdc668cc312342761057c59cb8ab1abadf"
   integrity sha512-PTJpjAFVbzBQ9xXpzMTroShvD5YDIIy46jQ7d4LrWpY+/5a8H90Tm8hE3Hvkc5RBRspVo7kvEOnqQms0A+2Q6w==
 
-"@next/eslint-plugin-next@12.3.0":
+"@next/eslint-plugin-next@12.3.0", "@next/eslint-plugin-next@^12.3.0":
   version "12.3.0"
   resolved "https://registry.yarnpkg.com/@next/eslint-plugin-next/-/eslint-plugin-next-12.3.0.tgz#302c1f03618d5001ce92ea6826c329268759128e"
   integrity sha512-jVdq1qYTNDjUtulnE8/hkPv0pHILV4jMg5La99iaY/FFm20WxVnsAZtbNnMvlPbf8dc010oO304SX9yXbg5PAw==
@@ -1074,6 +1074,11 @@ eslint-config-next@12.3.0:
     eslint-plugin-jsx-a11y "^6.5.1"
     eslint-plugin-react "^7.29.4"
     eslint-plugin-react-hooks "^4.5.0"
+
+eslint-config-prettier@^8.5.0:
+  version "8.5.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-8.5.0.tgz#5a81680ec934beca02c7b1a61cf8ca34b66feab1"
+  integrity sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==
 
 eslint-import-resolver-node@^0.3.6:
   version "0.3.6"

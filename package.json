@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/eslint-plugin-next": "^12.3.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "autoprefixer": "^10.4.11",
+    "eslint-config-prettier": "^8.5.0",
     "flowbite": "^1.5.3",
     "flowbite-react": "^0.1.11",
     "flowbite-typography": "^1.0.3",
