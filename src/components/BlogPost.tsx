@@ -7,12 +7,12 @@ import ViewIcon from "../resources/icons/ViewIcon";
 
 const BlogPost = () => {
   return (
-    <div className="mt-2 flex h-[326px] md:min-w-[520px] flex-col gap-6 bg-white px-10 py-9 shadow-lg">
+    <div className="mt-2 flex h-[326px] flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]">
       <div className="flex flex-row">
-        <div className="imageBox h-24 w-24 shrink-0 bg-teal-800"></div>
+        <div className="imageBox h-24 w-24 shrink-0 bg-teal-600"></div>
         <div className="ml-3">
           <h2 className="keep-all  h-20 text-2xl font-semibold">
-            젠킨스로 CI/CD 파이프라인 구축하기 (3)
+            Jenkins를 이용하여 CI/CD 파이프라인 구축하기
           </h2>
           <div className="postInfoBox flex flex-row gap-4 text-xs">
             <div className="felx-row flex items-center gap-1">

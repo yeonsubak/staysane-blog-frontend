@@ -7,17 +7,17 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['Noto Sans KR', 'sans-serif'],
-      serif: ['Noto Serif KR', 'serif'],
+      sans: ["Noto Sans KR", "sans-serif"],
+      serif: ["Noto Serif KR", "serif"],
     },
     colors: {
-      'themeGray': '#F9F9FE',
+      themeGray: "#F9F9FE",
     },
     extend: {},
   },
   plugins: [
     require("flowbite/plugin"),
-    require('flowbite-typography'),
-    require('@tailwindcss/line-clamp'),
+    require("flowbite-typography"),
+    require("@tailwindcss/line-clamp"),
   ],
 };
