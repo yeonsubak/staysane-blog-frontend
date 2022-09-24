@@ -5,6 +5,7 @@ import { ThemeProvider } from "next-themes";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import { Flowbite } from "flowbite-react";
+import TopNavBar from "../components/TopNavBar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -17,28 +18,17 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <Flowbite
           theme={{
-            theme: {
-              navbar: {
-                base: "bg-themeGray",
-                link: {
-                  base: "block py-2 pr-4 pl-3 md:p-0",
-                  active: {
-                    on: "bg-blue-700 text-white md:bg-transparent md:text-blue-700",
-                    off: "border-b border-gray-100  text-gray-700 hover:bg-gray-50 md:border-0 md:hover:bg-transparent md:hover:text-blue-700",
-                  },
-                  disabled: {
-                    on: "text-gray-400 hover:cursor-not-allowed",
-                    off: "",
-                  },
-                },
-                collapse: {
-                  list: "mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-lg font-medium",
-                },
-              },
-            },
+            theme: {},
           }}
         >
-          <Component {...pageProps} />
+          <div className="bg-themeGray">
+            <div className="w-auto px-8 py-4 md:mx-auto md:w-[768px]">
+              <div className="mb-8">
+                <TopNavBar />
+              </div>
+              <Component {...pageProps} />
+            </div>
+          </div>
         </Flowbite>
       </ThemeProvider>
     </Provider>
