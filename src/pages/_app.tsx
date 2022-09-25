@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         forcedTheme="light"
       >
         <div className="bg-themeGray min-h-screen">
-          <div className="w-auto px-8 py-4 md:mx-auto md:w-[768px]">
+          <div className="w-auto px-8 py-4 md:mx-auto lg:w-[1024px]">
             <div className="mb-8">
               <TopNavBar />
             </div>

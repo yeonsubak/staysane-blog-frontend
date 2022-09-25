@@ -17,7 +17,7 @@ const BlogPostShort = ({ attributes }: BlogPosts) => {
   return (
     <div className="mt-2 flex h-[326px] flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]">
       <div className="flex flex-row">
-        <div className={`imageBox h-24 w-24 shrink-0 bg-teal-600`}>
+        <div className="imageBox h-24 w-24 shrink-0 bg-teal-600">
           
         </div>
         <div className="ml-3">
