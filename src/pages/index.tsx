@@ -5,7 +5,7 @@ import { store } from "../store/store";
 
 import PlaylistWidget from "../components/PlaylistWidget";
 import StaysaneLogo from "../resources/img/StaysaneLogo";
-import BlogPost from "../components/BlogPost";
+import BlogPost from "../components/BlogPostShort";
 import { useTheme } from "next-themes";
 import TopNavBar from "../components/TopNavBar";
 

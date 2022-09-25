@@ -1,10 +1,8 @@
 import "/styles/globals.css";
 import type { AppProps } from "next/app";
-import { useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
-import { Flowbite } from "flowbite-react";
 import TopNavBar from "../components/TopNavBar";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -16,20 +14,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         enableColorScheme={false}
         forcedTheme="light"
       >
-        <Flowbite
-          theme={{
-            theme: {},
-          }}
-        >
-          <div className="bg-themeGray">
-            <div className="w-auto px-8 py-4 md:mx-auto md:w-[768px]">
-              <div className="mb-8">
-                <TopNavBar />
-              </div>
-              <Component {...pageProps} />
+        <div className="bg-themeGray min-h-screen">
+          <div className="w-auto px-8 py-4 md:mx-auto md:w-[768px]">
+            <div className="mb-8">
+              <TopNavBar />
             </div>
+            <Component {...pageProps} />
           </div>
-        </Flowbite>
+        </div>
       </ThemeProvider>
     </Provider>
   );
