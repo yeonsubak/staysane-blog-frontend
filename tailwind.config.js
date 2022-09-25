@@ -9,9 +9,6 @@ module.exports = {
       sans: ["Noto Sans KR", "sans-serif"],
       serif: ["Noto Serif KR", "serif"],
     },
-    colors: {
-      themeGray: "#F9F9FE",
-    },
     extend: {},
   },
   plugins: [require("@tailwindcss/line-clamp")],
