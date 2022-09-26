@@ -11,10 +11,12 @@ import parse from "html-react-parser";
 const BlogPost = (props: IPropsBlogPost) => {
   const attributes: IPostAttr = props.attributes;
   const isFull: boolean = props.isFull;
-  const article: any = parse(editorjsConverter(attributes.article));
   const [parsedArticle, setParsedArticle] = useState("");
 
   useEffect(() => {
+    const article: any = async () => {
+      parse(await editorjsConverter(attributes.article));
+    };
     setParsedArticle(article);
   }, []);
 
@@ -68,9 +70,9 @@ const BlogPost = (props: IPropsBlogPost) => {
         </div>
       </div>
       <div className="px-4 py-4">
-        <div className={isFull ? css.full.postBody : css.preview.postBody}>
-          {parsedArticle}
-        </div>
+        <div
+          className={isFull ? css.full.postBody : css.preview.postBody}
+        ></div>
       </div>
       <div className="postBoxFooter flex flex-row">
         <div className="hashtagBox flex gap-6 font-semibold">

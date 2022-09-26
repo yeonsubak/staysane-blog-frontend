@@ -1,8 +1,8 @@
 import { IEditorJSArticle, IPostAttr } from "../types/blogtypes";
 
-export default function editorjsConverter(article: string) {
+export default async function editorjsConverter(article: string) {
   let htmlArr: Array<any> = [];
-  const parsed: IEditorJSArticle = JSON.parse(article);
+  const parsed: IEditorJSArticle = await JSON.parse(article);
 
   parsed.blocks.map((block) => {
     const expr = block.type;
