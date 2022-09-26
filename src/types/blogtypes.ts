@@ -12,7 +12,7 @@ export interface ISinglePost {
 export interface IPropsBlogPost {
   id: number;
   attributes: IPostAttr;
-  dispType: string
+  isFull: boolean;
 }
 
 export interface IPost {

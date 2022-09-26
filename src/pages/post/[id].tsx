@@ -42,7 +42,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const PostDetail = ({ data }: ISinglePost) => {
   return (
-    <BlogPost id={data.id} attributes={data.attributes} dispType='full' />
+    <BlogPost id={data.id} attributes={data.attributes} isFull={true} />
   );
 };
 

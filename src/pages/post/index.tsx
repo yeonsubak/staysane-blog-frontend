@@ -20,7 +20,7 @@ const Posts = ({ data }: IAllPosts) => {
   return (
     <div>
       {data.map((data) => (
-        <BlogPost id={data.id} attributes={data.attributes} dispType='preview' />
+        <BlogPost id={data.id} attributes={data.attributes} isFull={false} />
       ))}
     </div>
   );
