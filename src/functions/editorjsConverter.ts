@@ -1,10 +1,11 @@
 import { IEditorJSArticle, IPostAttr } from "../types/blogtypes";
+import parse from "html-react-parser";
 
-export default async function editorjsConverter(article: string) {
-  let htmlArr: Array<any> = [];
+export async function editorjsConverter(article: string) {
+  let htmlArr: Array<string> = [];
   const parsed: IEditorJSArticle = await JSON.parse(article);
 
-  parsed.blocks.map((block) => {
+  await parsed.blocks.map((block) => {
     const expr = block.type;
 
     switch (expr) {
@@ -46,5 +47,5 @@ export default async function editorjsConverter(article: string) {
       }
   });
 
-  return htmlArr.join("");
+  return parse(htmlArr.join(""));
 }

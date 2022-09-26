@@ -167,3 +167,4 @@ export interface IEditorJSImg {
   height: number;
   mime: string;
 }
+

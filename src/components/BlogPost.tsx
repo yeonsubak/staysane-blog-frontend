@@ -1,24 +1,20 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import editorjsConverter from "../functions/editorjsConverter";
+import {editorjsConverter} from "../functions/editorjsConverter";
 import BookIcon from "../resources/icons/BookIcon";
 import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
 import ViewIcon from "../resources/icons/ViewIcon";
 import { IPostAttr, IPropsBlogPost } from "../types/blogtypes";
 import parse from "html-react-parser";
+import { resolve } from "path";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const attributes: IPostAttr = props.attributes;
   const isFull: boolean = props.isFull;
-  const [parsedArticle, setParsedArticle] = useState("");
-
-  useEffect(() => {
-    const article: any = async () => {
-      parse(await editorjsConverter(attributes.article));
-    };
-    setParsedArticle(article);
-  }, []);
+  const [parsedArticle, setParsedArticle] = useState<string | JSX.Element | JSX.Element[]>();
+  
+  editorjsConverter(attributes.article).then(data => setParsedArticle(data))
 
   const css = {
     preview: {
@@ -72,7 +68,7 @@ const BlogPost = (props: IPropsBlogPost) => {
       <div className="px-4 py-4">
         <div
           className={isFull ? css.full.postBody : css.preview.postBody}
-        ></div>
+        >{parsedArticle}</div>
       </div>
       <div className="postBoxFooter flex flex-row">
         <div className="hashtagBox flex gap-6 font-semibold">
