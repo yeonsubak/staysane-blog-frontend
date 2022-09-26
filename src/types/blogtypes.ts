@@ -1,16 +1,27 @@
 // Posts-related interfaces
-export interface GetAllPosts {
-  data: BlogPosts[];
-  meta: Meta;
+export interface IAllPosts {
+  data: IPost[];
+  meta: IMeta;
 }
 
-export interface BlogPosts {
+export interface ISinglePost {
+  data: IPost;
+  meta: IMeta;
+}
+
+export interface IPropsBlogPost {
+  id: number;
+  attributes: IPostAttr;
+  dispType: string
+}
+
+export interface IPost {
   key: number;
   id: number;
-  attributes: Attributes;
+  attributes: IPostAttr;
 }
 
-export interface Attributes {
+export interface IPostAttr {
   title: string;
   article: string;
   publishedDate: string;
@@ -18,33 +29,28 @@ export interface Attributes {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  coverImg: CoverImg;
-  hashtags: Hashtag[];
+  coverImg: ICoverImg;
   localizations: string;
-  author: Author
+  author: IAuthor;
+  hashtags: IHashtag;
 }
 
-export interface Hashtag {
+export interface ICoverImg {
+  data: ICoverImgDatum[] | null;
+}
+
+export interface ICoverImgDatum {
   id: number;
-  hashtag: string;
+  attributes: IMediaAttr;
 }
 
-export interface CoverImg {
-  data: CoverImgDatum[] | null;
-}
-
-export interface CoverImgDatum {
-  id: number;
-  attributes: MediaAttributes;
-}
-
-export interface MediaAttributes {
+export interface IMediaAttr {
   name: string;
   alternativeText: string;
   caption: string;
   width: number;
   height: number;
-  formats: Formats;
+  formats: IFormats;
   hash: string;
   ext: string;
   mime: string;
@@ -57,14 +63,14 @@ export interface MediaAttributes {
   updatedAt: Date;
 }
 
-export interface Formats {
-  large: Large;
-  small: Large;
-  medium: Large;
-  thumbnail: Large;
+export interface IFormats {
+  large: ILarge;
+  small: ILarge;
+  medium: ILarge;
+  thumbnail: ILarge;
 }
 
-export interface Large {
+export interface ILarge {
   ext: string;
   url: string;
   hash: string;
@@ -76,11 +82,11 @@ export interface Large {
   height: number;
 }
 
-export interface Meta {
-  pagination: Pagination;
+export interface IMeta {
+  pagination: IPagination;
 }
 
-export interface Pagination {
+export interface IPagination {
   page: number;
   pageSize: number;
   pageCount: number;
@@ -88,27 +94,43 @@ export interface Pagination {
 }
 
 // Author-related interfaces
-export interface Author {
-  data: AuthorData;
+export interface IAuthor {
+  data: IAuthorData;
 }
 
-export interface AuthorData {
+export interface IAuthorData {
   id: number;
-  attributes: AuthorAttributes;
+  attributes: IAuthorAttr;
 }
 
-export interface AuthorAttributes {
+export interface IAuthorAttr {
   name: string;
   createdAt: Date;
   updatedAt: Date;
-  profileImg: ProfileImg;
+  profileImg: IProfileImg;
 }
 
-export interface ProfileImg {
-  data: ProfileImgData;
+export interface IProfileImg {
+  data: IProfileImgData;
 }
 
-export interface ProfileImgData {
+export interface IProfileImgData {
   id: number;
-  attributes: MediaAttributes;
+  attributes: IMediaAttr;
+}
+
+// Hashtag-related interfaces
+export interface IHashtag {
+  data: IHashtagDatum[];
+}
+
+export interface IHashtagDatum {
+  id: number;
+  attributes: IHashtagAttr;
+}
+
+export interface IHashtagAttr {
+  hashtag: string;
+  createdAt: Date;
+  updatedAt: Date;
 }

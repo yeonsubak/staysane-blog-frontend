@@ -4,9 +4,14 @@ import BookIcon from "../resources/icons/BookIcon";
 import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
 import ViewIcon from "../resources/icons/ViewIcon";
-import { BlogPosts } from "../types/blogtypes";
+import { IPostAttr, IPropsBlogPost } from "../types/blogtypes";
 
-const BlogPostShort = ({ attributes }: BlogPosts) => {
+const BlogPost = (props: IPropsBlogPost) => {
+  const attributes: IPostAttr = props.attributes;
+  const dispType: string = props.dispType;
+
+  
+
   const dateTime = (date: any) => {
     const dt = new Date(date);
     return `${dt.toLocaleDateString("ko-KR")} ${dt.toLocaleTimeString(
@@ -48,12 +53,12 @@ const BlogPostShort = ({ attributes }: BlogPosts) => {
       </div>
       <div className="postBoxFooter flex flex-row">
         <div className="hashtagBox flex gap-6 font-semibold">
-          {attributes.hashtags.map((data, idx) => (
+          {attributes.hashtags.data.map((data, idx) => (
             <button
               key={idx}
               className="bg-gray-50 px-3 py-2 text-sm shadow-md"
             >
-              {`# ${data.hashtag}`}
+              {`# ${data.attributes.hashtag}`}
             </button>
           ))}
         </div>
@@ -77,4 +82,4 @@ const BlogPostShort = ({ attributes }: BlogPosts) => {
   );
 };
 
-export default BlogPostShort;
+export default BlogPost;

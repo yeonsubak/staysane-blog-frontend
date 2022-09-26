@@ -1,13 +1,13 @@
 import axios from "axios";
 import { GetStaticProps } from "next";
-import BlogPostShort from "../../components/BlogPostShort";
-import { BlogPosts, GetAllPosts, Attributes } from "../../types/blogtypes";
+import BlogPost from "../../components/BlogPost";
+import { IAllPosts} from "../../types/blogtypes";
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(
-    `http://strapi.staysane.me/api/posts?populate=hashtags&populate=coverImg&populate=author.profileImg`
+    `https://strapi.staysane.me/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
-  const { data }: GetAllPosts = await res.data;
+  const { data }: IAllPosts = await res.data;
 
   return {
     props: {
@@ -16,11 +16,11 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-const Posts = ({ data }: GetAllPosts) => {
+const Posts = ({ data }: IAllPosts) => {
   return (
     <div>
       {data.map((data) => (
-        <BlogPostShort key={data.id} id={data.id} attributes={data.attributes} />
+        <BlogPost id={data.id} attributes={data.attributes} dispType='preview' />
       ))}
     </div>
   );
