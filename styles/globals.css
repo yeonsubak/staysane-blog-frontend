@@ -5,8 +5,6 @@
   .keep-all {
     word-break: keep-all;
   }
-
-
 }
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@200;300;400;500;600;700&display=swap');
 
@@ -19,12 +17,33 @@
 }
 
 .edjs-h2 {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 1.5rem; /* 24px */
-  line-height: 2.2rem; /* 32px */
+  line-height: 2rem; /* 32px */
+  margin: 0.5rem 0;
 }
 
 .edjs-warning-box {
-  
+  width: 90%;
+  margin: 1rem auto;
+  padding: 0.75rem 1rem;
+  border-width: 2px;
+  border-color: #bcbcbc;
+  border-radius: 0.5rem;
+}
+
+.edjs-warning-title {
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+
+.edjs-warning-message {
+  padding-left: 1.5rem;
+}
+
+.edjs-list-ul {
+  padding-left: 2rem;
+  list-style-type: disc;
+  list-style-position: inside;
 }
 

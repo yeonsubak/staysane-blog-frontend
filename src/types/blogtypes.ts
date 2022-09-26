@@ -157,6 +157,7 @@ export interface IEditorJSData {
   withBorder: boolean;
   message: string;
   title: string;
+  items: string[];
 }
 
 export interface IEditorJSImg {
