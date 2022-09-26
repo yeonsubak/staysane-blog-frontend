@@ -134,3 +134,35 @@ export interface IHashtagAttr {
   createdAt: Date;
   updatedAt: Date;
 }
+
+// EditorJS Block Converter
+export interface IEditorJSArticle {
+  blocks: IEditorJSBlocks[];
+  time: Date;
+}
+
+export interface IEditorJSBlocks {
+  data: IEditorJSData;
+  id: string;
+  type: string;
+}
+
+export interface IEditorJSData {
+  level: number;
+  text: string;
+  caption: string;
+  file: IEditorJSImg;
+  stretched: boolean;
+  withBackground: boolean;
+  withBorder: boolean;
+  message: string;
+  title: string;
+}
+
+export interface IEditorJSImg {
+  url: string;
+  alt: string;
+  width: number;
+  height: number;
+  mime: string;
+}
