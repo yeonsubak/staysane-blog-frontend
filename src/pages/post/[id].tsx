@@ -12,14 +12,6 @@ export async function getStaticPaths() {
     params: { id: post.id.toString() },
   }));
 
-  // const paths = data.map((post) => {
-  //   return {
-  //     params: {
-  //       id: post.id.toString(),
-  //     },
-  //   };
-  // });
-
   return {
     paths,
     fallback: false,
@@ -42,7 +34,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 const PostDetail = ({ data }: ISinglePost) => {
   return (
-    <BlogPost id={data.id} attributes={data.attributes} isFull={true} />
+    <div className="flex justify-center">
+      <BlogPost id={data.id} attributes={data.attributes} isFull={true} />
+    </div>
   );
 };
 

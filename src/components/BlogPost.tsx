@@ -21,13 +21,13 @@ const BlogPost = (props: IPropsBlogPost) => {
   const css = {
     preview: {
       postBox:
-        "mt-2 flex h-[326px] flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
-      postBodyP: "line-clamp-3 keep-all",
+        "mt-2 h-[326px] max-w-[768px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
+      postBody: "line-clamp-3 keep-all",
     },
     full: {
       postBox:
-        "mt-2 flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
-      postBodyP: "keep-all",
+        "mt-2 max-w-[768px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
+      postBody: "keep-all leading-loose",
     },
   };
 
@@ -67,8 +67,10 @@ const BlogPost = (props: IPropsBlogPost) => {
           </div>
         </div>
       </div>
-      <div className={isFull ? css.full.postBodyP : css.preview.postBodyP}>
-        {parsedArticle}
+      <div className="px-4 py-4">
+        <div className={isFull ? css.full.postBody : css.preview.postBody}>
+          {parsedArticle}
+        </div>
       </div>
       <div className="postBoxFooter flex flex-row">
         <div className="hashtagBox flex gap-6 font-semibold">
