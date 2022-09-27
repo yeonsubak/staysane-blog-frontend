@@ -3,21 +3,22 @@ import BookIcon from "../resources/icons/BookIcon";
 import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
 import ViewIcon from "../resources/icons/ViewIcon";
-import { IPostAttr, IPropsBlogPost } from "../types/blogtypes";
+import { IPropsBlogPost } from "../types/blogtypes";
 import parse from "html-react-parser";
-import { resolve } from "path";
+import Link from "next/link";
 
 const BlogPost = (props: IPropsBlogPost) => {
-  const attributes: IPostAttr = props.attributes;
-  const isFull: boolean = props.isFull;
-  const article: string = props.article;
+  const id = props.id;
+  const attributes = props.attributes;
+  const isFull = props.isFull;
+  const article = props.article;
   const parsedArticle = parse(article);
 
   const css = {
     preview: {
       postBox:
-        "mt-2 h-[346px] max-w-[724px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
-      postBody: "line-clamp-3 keep-all",
+        "mt-2 h-[384px] max-w-[640px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
+      postBody: "line-clamp-4 keep-all",
     },
     full: {
       postBox:
@@ -38,10 +39,14 @@ const BlogPost = (props: IPropsBlogPost) => {
       <div className="flex flex-row">
         <div className="imageBox h-24 w-24 shrink-0 bg-teal-600"></div>
         <div className="ml-4">
-          <h2 className="keep-all -mt-1 h-20 text-[1.8rem] font-semibold leading-10">
-            {attributes.title}
-          </h2>
-          <div className="postInfoBox flex pt-[0.375rem] flex-row gap-4 text-xs">
+          <Link href={`/post/${id.toString()}`}>
+            <a>
+              <h2 className="keep-all -mt-1 h-20 text-[1.8rem] font-semibold leading-10">
+                {attributes.title}
+              </h2>
+            </a>
+          </Link>
+          <div className="postInfoBox flex flex-row gap-4 pt-[0.375rem] text-xs">
             <div className="flex flex-row items-center gap-1">
               <>
                 <DateIcon />
