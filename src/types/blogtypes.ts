@@ -61,8 +61,8 @@ export interface IMediaAttr {
   previewUrl: null;
   provider: string;
   provider_metadata: null;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IFormats {
@@ -107,8 +107,8 @@ export interface IAuthorData {
 
 export interface IAuthorAttr {
   name: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
   profileImg: IProfileImg;
 }
 
@@ -133,8 +133,8 @@ export interface IHashtagDatum {
 
 export interface IHashtagAttr {
   hashtag: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 // EditorJS Block Converter
