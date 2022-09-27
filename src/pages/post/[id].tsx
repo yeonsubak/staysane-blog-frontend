@@ -1,7 +1,7 @@
 import axios from "axios";
 import { GetStaticProps } from "next";
 import Head from "next/head";
-import { ParsedUrlQuery } from 'querystring';
+import { ParsedUrlQuery } from "querystring";
 import BlogPost from "../../components/BlogPost";
 import { editorjsConverter } from "../../functions/editorjsConverter";
 import { IAllPosts, ISinglePost } from "../../types/blogtypes";
@@ -32,18 +32,24 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props: {
       data: data.data,
       article: article,
-      coverImg: data.data.attributes.coverImg
+      coverImg: data.data.attributes.coverImg,
     },
   };
 };
 
 const PostDetail = ({ data, article, coverImg }: ISinglePost) => {
   return (
-    <div className="flex justify-center mb-8">
+    <div className="mb-8 flex justify-center">
       <Head>
         <title>{`${data.attributes.title} | Stay Sane, Think Straight`}</title>
       </Head>
-      <BlogPost id={data.id} attributes={data.attributes} isFull={true} article={article} coverImg={coverImg}/>
+      <BlogPost
+        id={data.id}
+        attributes={data.attributes}
+        isFull={true}
+        article={article}
+        coverImg={coverImg}
+      />
     </div>
   );
 };

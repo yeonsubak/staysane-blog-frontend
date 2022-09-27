@@ -20,22 +20,22 @@ const BlogPost = (props: IPropsBlogPost) => {
       postBox:
         "mt-2 flex flex-col max-w-[768px] h-[384px]  gap-6 bg-white px-10 py-9 shadow-lg sm:min-w-[520px]",
       postBody: "line-clamp-4 keep-all leading-loose",
-      imageBox: "imageBox h-14 w-14 shrink-0 bg-teal-600 sm:h-24 sm:w-24",
-      postHeaderBox: "flex flex-row",
+      imageBox: "w-full sm:shrink-0 bg-teal-600 sm:h-24 sm:w-24",
+      postHeaderBox: "flex flex-col items-center sm:flex-row",
       postHeader:
         "keep-all -mt-1 h-20 text-lg font-semibold sm:text-[1.8rem] sm:leading-10",
       postInfoBox: "flex flex-row gap-4 pt-[0.375rem] text-xs",
     },
     full: {
       postBox:
-        "mt-2 px-6 sm:px-10 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px]",
-      postBody: "keep-all leading-loose",
-      imageBox: "imageBox w-full",
+        "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
+      postBody: "-m-3 keep-all leading-loose sm:m-0",
+      imageBox: "w-full",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
-        "keep-all py-4 h-20 text-xl font-semibold text-center sm:text-[1.8rem] sm:leading-10",
+        "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
       postInfoBox:
-        "flex flex-col items-center sm:flex sm:flex-row sm:gap-4 -mt-4 text-xs",
+        "flex flex-col items-center sm:flex sm:flex-row sm:gap-4 text-xs",
     },
   };
 
@@ -52,13 +52,17 @@ const BlogPost = (props: IPropsBlogPost) => {
         className={isFull ? css.full.postHeaderBox : css.preview.postHeaderBox}
       >
         <div className={isFull ? css.full.imageBox : css.preview.imageBox}>
-          <Image
-            src={coverImg.data?.attributes.url}
-            width={attributes.coverImg.data?.attributes.width}
-            height={attributes.coverImg.data?.attributes.height}
-            className="object-cover object-center"
-            alt={""}
-          />
+          {isFull ? (
+            <Image
+              src={coverImg.data?.attributes.url}
+              width={attributes.coverImg.data?.attributes.width}
+              height={attributes.coverImg.data?.attributes.height}
+              className="object-cover object-center"
+              alt={""}
+            />
+          ) : (
+            ""
+          )}
         </div>
         <div className="ml-2 sm:ml-4">
           <Link href={`/post/${id.toString()}`}>

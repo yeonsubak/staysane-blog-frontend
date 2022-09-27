@@ -14,8 +14,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         enableColorScheme={false}
         forcedTheme="light"
       >
-        <div className="bg-gray-50 min-h-screen">
-          <div className="w-auto px-8 py-4 md:mx-auto lg:w-[1024px]">
+        <div className="min-h-screen bg-gray-50">
+          <div className="w-auto px-4 py-4 sm:px-8 md:mx-auto lg:w-[1024px]">
             <div className="mb-8">
               <TopNavBar />
             </div>

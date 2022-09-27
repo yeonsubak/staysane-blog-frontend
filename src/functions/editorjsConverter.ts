@@ -16,7 +16,7 @@ export async function editorjsConverter(article: string) {
         );
         break;
       case "paragraph":
-        htmlArr.push(`<p>${block.data.text}</p>`);
+        htmlArr.push(`<p class="edjs-p">${block.data.text}</p>`);
         break;
       case "image":
         htmlArr.push(`<div class="py-4 flex flex-col items-center">`);
