@@ -4,6 +4,7 @@ import Image from "next/image";
 import { editorjsConverter } from "../functions/editorjsConverter";
 import { GetAbout, IAbout } from "../types/abouttypes";
 import parse from "html-react-parser";
+import Head from "next/head";
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(
@@ -26,6 +27,9 @@ const About = ({ data, profileImg, article }: any) => {
 
   return (
     <div className="flex flex-col items-center">
+      <Head>
+        <title>About | Stay Sane, Think Straight.</title>
+      </Head>
       <div className="mb-6 flex max-w-[768px] flex-col items-center bg-white px-10 pt-16 pb-12 shadow-lg md:min-w-[680px]">
         <div className="h-80 w-80">
           <Image

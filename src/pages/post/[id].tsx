@@ -1,5 +1,6 @@
 import axios from "axios";
 import { GetStaticProps } from "next";
+import Head from "next/head";
 import { ParsedUrlQuery } from 'querystring';
 import BlogPost from "../../components/BlogPost";
 import { editorjsConverter } from "../../functions/editorjsConverter";
@@ -38,6 +39,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const PostDetail = ({ data, article }: ISinglePost) => {
   return (
     <div className="flex justify-center">
+      <Head>
+        <title>{`${data.attributes.title} | Stay Sane, Think Straight`}</title>
+      </Head>
       <BlogPost id={data.id} attributes={data.attributes} isFull={true} article={article} />
     </div>
   );
