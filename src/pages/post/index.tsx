@@ -9,15 +9,14 @@ export const getStaticProps: GetStaticProps = async () => {
     `https://strapi.staysane.me/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
   const { data }: IAllPosts = await res.data;
-  const rvsData = data.reverse()
-  const newData = []
+  const rvsData = await data.reverse()
 
-  rvsData.map(async (data) => {
+  await rvsData.map(async (data) => {
     const parsedArticle = await editorjsConverter(data.attributes.article)
     data.attributes.article = parsedArticle
   })
 
-  return {
+  return await {
     props: {
       data: rvsData,
     },
@@ -25,7 +24,6 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Posts = ({ data }: IAllPosts) => {
-
   return (
     <div>
       {data.map((data) => (

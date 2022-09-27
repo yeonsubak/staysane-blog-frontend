@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const data = await res.data;
   const article = await editorjsConverter(data.data.attributes.article);
 
-  return {
+  return await {
     props: {
       data: data.data,
       article: article
