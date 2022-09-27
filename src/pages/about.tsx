@@ -30,6 +30,7 @@ const About = ({ data, profileImg, article }: any) => {
         <div className="h-80 w-80">
           <Image
             className="rounded-full"
+            alt="profile image"
             src={profileImg.attributes.url}
             width={profileImg.attributes.width}
             height={profileImg.attributes.height}
