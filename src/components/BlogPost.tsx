@@ -17,7 +17,7 @@ const BlogPost = (props: IPropsBlogPost) => {
   const css = {
     preview: {
       postBox:
-        "mt-2 h-[384px] max-w-[640px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
+        "mt-2 h-[384px] max-w-[768px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
       postBody: "line-clamp-4 keep-all",
     },
     full: {

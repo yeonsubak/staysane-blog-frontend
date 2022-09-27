@@ -25,7 +25,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Posts = ({ data }: IAllPosts) => {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       {data.map((data) => (
         <BlogPost
           key={data.id}
