@@ -31,18 +31,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return await {
     props: {
       data: data.data,
-      article: article
+      article: article,
+      coverImg: data.data.attributes.coverImg
     },
   };
 };
 
-const PostDetail = ({ data, article }: ISinglePost) => {
+const PostDetail = ({ data, article, coverImg }: ISinglePost) => {
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mb-8">
       <Head>
         <title>{`${data.attributes.title} | Stay Sane, Think Straight`}</title>
       </Head>
-      <BlogPost id={data.id} attributes={data.attributes} isFull={true} article={article} />
+      <BlogPost id={data.id} attributes={data.attributes} isFull={true} article={article} coverImg={coverImg}/>
     </div>
   );
 };

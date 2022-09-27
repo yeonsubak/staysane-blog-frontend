@@ -20,6 +20,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return await {
     props: {
       data: rvsData,
+      coverImg: rvsData
     },
   };
 };
@@ -37,6 +38,7 @@ const Posts = ({ data }: IAllPosts) => {
           attributes={data.attributes}
           isFull={false}
           article={data.attributes.article}
+          coverImg={""}
         />
       ))}
     </div>
