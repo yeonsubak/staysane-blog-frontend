@@ -3,8 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['staysane-blog-storage.s3.ap-northeast-2.amazonaws.com']
-  }
-}
+    domains: ["staysane-blog-storage.s3.ap-northeast-2.amazonaws.com"],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/about",
+        permanent: true,
+      },
+    ];
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

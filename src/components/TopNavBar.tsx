@@ -22,7 +22,7 @@ const TopNavBar = () => {
             <Link href="/post">Blog</Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link href="https://github.com/yeonsubak">Github</Link>
           </li>
         </ul>
         <div className="ml-auto block md:hidden">
@@ -39,7 +39,7 @@ const TopNavBar = () => {
               <Link href="/post">Blog</Link>
             </li>
             <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="https://github.com/yeonsubak">Github</Link>
             </li>
           </ul>
         </div>
