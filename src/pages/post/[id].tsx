@@ -2,6 +2,7 @@ import axios from "axios";
 import { GetStaticProps } from "next";
 import { ParsedUrlQuery } from 'querystring';
 import BlogPost from "../../components/BlogPost";
+import { editorjsConverter } from "../../functions/editorjsConverter";
 import { IAllPosts, ISinglePost } from "../../types/blogtypes";
 
 export async function getStaticPaths() {
@@ -24,18 +25,20 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `https://strapi.staysane.me/api/posts/${id}?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
   const data = await res.data;
+  const article = await editorjsConverter(data.data.attributes.article);
 
   return {
     props: {
       data: data.data,
+      article: article
     },
   };
 };
 
-const PostDetail = ({ data }: ISinglePost) => {
+const PostDetail = ({ data, article }: ISinglePost) => {
   return (
     <div className="flex justify-center">
-      <BlogPost id={data.id} attributes={data.attributes} isFull={true} />
+      <BlogPost id={data.id} attributes={data.attributes} isFull={true} article={article} />
     </div>
   );
 };

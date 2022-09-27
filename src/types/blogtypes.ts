@@ -7,12 +7,14 @@ export interface IAllPosts {
 export interface ISinglePost {
   data: IPost;
   meta: IMeta;
+  article: string;
 }
 
 export interface IPropsBlogPost {
   id: number;
   attributes: IPostAttr;
   isFull: boolean;
+  article: string;
 }
 
 export interface IPost {
@@ -23,7 +25,7 @@ export interface IPost {
 
 export interface IPostAttr {
   title: string;
-  article: string;
+  article: string | string[];
   publishedDate: string;
   createdAt: string;
   updatedAt: string;
@@ -167,4 +169,3 @@ export interface IEditorJSImg {
   height: number;
   mime: string;
 }
-

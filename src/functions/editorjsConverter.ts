@@ -1,5 +1,4 @@
 import { IEditorJSArticle, IPostAttr } from "../types/blogtypes";
-import parse from "html-react-parser";
 
 export async function editorjsConverter(article: string) {
   let htmlArr: Array<string> = [];
@@ -36,16 +35,20 @@ export async function editorjsConverter(article: string) {
           `<p class="edjs-warning-message">${block.data.message}</p>`
         );
         htmlArr.push(`</div>`);
+        break;
       case "list":
         htmlArr.push(`<ul class="edjs-list-ul">`);
         if (Array.isArray(block.data.items)) {
           block.data.items.map((item) => {
-            htmlArr.push(`<li>${item}</li>`)
-          })
+            htmlArr.push(`<li>${item}</li>`);
+          });
         }
         htmlArr.push(`</ul>`);
-      }
+        break;
+      default:
+        htmlArr.push(`<div>Undefined block type: ${block.type}</div>`);
+    }
   });
 
-  return parse(htmlArr.join(""));
+  return htmlArr.join("");
 }

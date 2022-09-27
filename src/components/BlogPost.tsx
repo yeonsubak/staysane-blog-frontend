@@ -1,6 +1,4 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
-import {editorjsConverter} from "../functions/editorjsConverter";
 import BookIcon from "../resources/icons/BookIcon";
 import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
@@ -12,9 +10,9 @@ import { resolve } from "path";
 const BlogPost = (props: IPropsBlogPost) => {
   const attributes: IPostAttr = props.attributes;
   const isFull: boolean = props.isFull;
-  const [parsedArticle, setParsedArticle] = useState<string | JSX.Element | JSX.Element[]>();
-  
-  editorjsConverter(attributes.article).then(data => setParsedArticle(data))
+  const article: string = props.article;
+
+  const parsedArticle = parse(article);
 
   const css = {
     preview: {
@@ -29,7 +27,7 @@ const BlogPost = (props: IPropsBlogPost) => {
     },
   };
 
-  const dateTime = (date: any) => {
+  const dateTime = (date: string) => {
     const dt = new Date(date);
     return `${dt.toLocaleDateString("ko-KR")} ${dt.toLocaleTimeString(
       "ko-KR"
@@ -66,9 +64,9 @@ const BlogPost = (props: IPropsBlogPost) => {
         </div>
       </div>
       <div className="px-4 py-4">
-        <div
-          className={isFull ? css.full.postBody : css.preview.postBody}
-        >{parsedArticle}</div>
+        <div className={isFull ? css.full.postBody : css.preview.postBody}>
+          {parsedArticle}
+        </div>
       </div>
       <div className="postBoxFooter flex flex-row">
         <div className="hashtagBox flex gap-6 font-semibold">
