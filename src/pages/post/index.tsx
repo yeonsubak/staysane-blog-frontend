@@ -9,20 +9,23 @@ export const getStaticProps: GetStaticProps = async () => {
     `https://strapi.staysane.me/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
   const { data }: IAllPosts = await res.data;
-  //Map으로 돌리자
-  let htmlArr: Array<string> = [];
-  const artile: any = await data.map(post => {
-    htmlArr.push()
+  const rvsData = data.reverse()
+  const newData = []
+
+  rvsData.map(async (data) => {
+    const parsedArticle = await editorjsConverter(data.attributes.article)
+    data.attributes.article = parsedArticle
   })
 
   return {
     props: {
-      data: data,
+      data: rvsData,
     },
   };
 };
 
 const Posts = ({ data }: IAllPosts) => {
+
   return (
     <div>
       {data.map((data) => (
@@ -31,7 +34,7 @@ const Posts = ({ data }: IAllPosts) => {
           id={data.id}
           attributes={data.attributes}
           isFull={false}
-          article={article}
+          article={data.attributes.article}
         />
       ))}
     </div>

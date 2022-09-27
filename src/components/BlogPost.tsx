@@ -11,13 +11,12 @@ const BlogPost = (props: IPropsBlogPost) => {
   const attributes: IPostAttr = props.attributes;
   const isFull: boolean = props.isFull;
   const article: string = props.article;
-
   const parsedArticle = parse(article);
 
   const css = {
     preview: {
       postBox:
-        "mt-2 h-[326px] max-w-[768px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
+        "mt-2 h-[346px] max-w-[724px] flex flex-col gap-6 bg-white px-10 py-9 shadow-lg md:min-w-[520px]",
       postBody: "line-clamp-3 keep-all",
     },
     full: {
@@ -38,11 +37,11 @@ const BlogPost = (props: IPropsBlogPost) => {
     <div className={isFull ? css.full.postBox : css.preview.postBox}>
       <div className="flex flex-row">
         <div className="imageBox h-24 w-24 shrink-0 bg-teal-600"></div>
-        <div className="ml-6">
-          <h2 className="keep-all h-20 text-3xl font-semibold">
+        <div className="ml-4">
+          <h2 className="keep-all -mt-1 h-20 text-[1.8rem] font-semibold leading-10">
             {attributes.title}
           </h2>
-          <div className="postInfoBox flex flex-row gap-4 text-xs">
+          <div className="postInfoBox flex pt-[0.375rem] flex-row gap-4 text-xs">
             <div className="flex flex-row items-center gap-1">
               <>
                 <DateIcon />
@@ -63,7 +62,7 @@ const BlogPost = (props: IPropsBlogPost) => {
           </div>
         </div>
       </div>
-      <div className="px-4 py-4">
+      <div className="px-4">
         <div className={isFull ? css.full.postBody : css.preview.postBody}>
           {parsedArticle}
         </div>

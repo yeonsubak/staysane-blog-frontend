@@ -25,7 +25,7 @@ export interface IPost {
 
 export interface IPostAttr {
   title: string;
-  article: string | string[];
+  article: string;
   publishedDate: string;
   createdAt: string;
   updatedAt: string;
