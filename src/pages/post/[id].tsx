@@ -31,13 +31,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return await {
     props: {
       data: data.data,
-      article: article,
-      coverImg: data.data.attributes.coverImg,
+      article: article
     },
   };
 };
 
-const PostDetail = ({ data, article, coverImg }: ISinglePost) => {
+const PostDetail = ({ data, article }: ISinglePost) => {
   return (
     <div className="mb-8 flex justify-center">
       <Head>
@@ -48,7 +47,6 @@ const PostDetail = ({ data, article, coverImg }: ISinglePost) => {
         attributes={data.attributes}
         isFull={true}
         article={article}
-        coverImg={coverImg}
       />
     </div>
   );

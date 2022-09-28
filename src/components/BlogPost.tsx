@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/future/image";
 import BookIcon from "../resources/icons/BookIcon";
 import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
@@ -12,7 +12,6 @@ const BlogPost = (props: IPropsBlogPost) => {
   const attributes = props.attributes;
   const isFull = props.isFull;
   const article = props.article;
-  const coverImg = props.coverImg;
   const parsedArticle = parse(article);
 
   // console.log(attributes.coverImg.data.attributes.formats.thumbnail.url)
@@ -20,8 +19,7 @@ const BlogPost = (props: IPropsBlogPost) => {
   const css = {
     preview: {
       postBox:
-        "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 shadow-lg sm:min-w-[520px]",
-      imageBox: "w-full",
+        "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[520px]",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
@@ -31,7 +29,6 @@ const BlogPost = (props: IPropsBlogPost) => {
     full: {
       postBox:
         "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
-      imageBox: "w-full",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
@@ -52,26 +49,14 @@ const BlogPost = (props: IPropsBlogPost) => {
       <div
         className={isFull ? css.full.postHeaderBox : css.preview.postHeaderBox}
       >
-        <div className={isFull ? css.full.imageBox : css.preview.imageBox}>
-          {isFull ? (
-            <Image
-              src={attributes.coverImg.data?.attributes.formats.medium.url}
-              width={attributes.coverImg.data?.attributes.formats.medium.width}
-              height={
-                attributes.coverImg.data?.attributes.formats.medium.height
-              }
-              className="object-cover object-center"
-              alt={""}
-            />
-          ) : (
-            <Image
-              src={attributes.coverImg.data?.attributes.formats.small.url}
-              width={attributes.coverImg.data?.attributes.formats.small.width}
-              height={attributes.coverImg.data?.attributes.formats.small.height}
-              className="object-fill"
-              alt={""}
-            />
-          )}
+        <div className="w-full">
+          <Image
+            src={attributes.coverImg.data?.attributes.formats.medium.url}
+            width={attributes.coverImg.data?.attributes.formats.medium.width}
+            height={attributes.coverImg.data?.attributes.formats.medium.height}
+            className="coverImg object-cover object-center h-32"
+            alt={attributes.coverImg.data.attributes.alternativeText}
+          />
         </div>
         <div className="ml-2 sm:ml-4">
           <Link href={`/post/${id.toString()}`}>
@@ -130,7 +115,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             </button>
           ))}
         </div>
-        <div className="avatarBox m-auto flex flex-row items-center gap-2 py-4 text-sm sm:m-0 sm:ml-auto sm:py-0 sm:text-base">
+        <div className="avatarBox m-auto pl-4 flex flex-row items-center gap-2 py-4 text-sm sm:m-0 sm:ml-auto sm:py-0 sm:text-base">
           <Image
             src={
               attributes.author.data.attributes.profileImg.data.attributes
@@ -139,7 +124,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             alt="Profile image of the blog owner."
             width={40}
             height={40}
-            className="rounded-full sm:h-full sm:w-full"
+            className="rounded-full w-8 h-8 sm:w-10 sm:h-10"
           />
           <p className="font-semibold">
             {attributes.author.data.attributes.name}

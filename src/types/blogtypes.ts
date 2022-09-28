@@ -8,7 +8,6 @@ export interface ISinglePost {
   data: IPost;
   meta: IMeta;
   article: string;
-  coverImg: ICoverImg;
 }
 
 export interface IPropsBlogPost {
@@ -16,7 +15,6 @@ export interface IPropsBlogPost {
   attributes: IPostAttr;
   isFull: boolean;
   article: string;
-  coverImg: any;
 }
 
 export interface IPost {
