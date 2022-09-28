@@ -6,6 +6,7 @@ import ViewIcon from "../resources/icons/ViewIcon";
 import { IPropsBlogPost } from "../types/blogtypes";
 import parse from "html-react-parser";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;
@@ -14,13 +15,11 @@ const BlogPost = (props: IPropsBlogPost) => {
   const article = props.article;
   const parsedArticle = parse(article);
 
-  // console.log(attributes.coverImg.data.attributes.formats.thumbnail.url)
-
   const css = {
     preview: {
       postBox:
-        "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[520px]",
-      coverImg: `h-16 object-contain object-center bg-[${attributes.coverImgBGColor}]`,
+        "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[640px]",
+      coverImg: "h-16 w-auto object-contain object-center",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
@@ -30,7 +29,7 @@ const BlogPost = (props: IPropsBlogPost) => {
     full: {
       postBox:
         "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
-      coverImg: `h-32 object-contain object-center bg-[${attributes.coverImgBGColor}]`,
+      coverImg: "h-32 w-auto object-contain object-center",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
@@ -51,11 +50,14 @@ const BlogPost = (props: IPropsBlogPost) => {
       <div
         className={isFull ? css.full.postHeaderBox : css.preview.postHeaderBox}
       >
-        <div>
+        <div
+          className="flex w-full justify-center"
+          style={{backgroundColor: attributes.coverImgBGColor}}
+        >
           <Image
-            src={attributes.coverImg.data?.attributes.formats.medium.url}
-            width={attributes.coverImg.data?.attributes.formats.medium.width}
-            height={attributes.coverImg.data?.attributes.formats.medium.height}
+            src={attributes.coverImg.data?.attributes.formats.small.url}
+            width={attributes.coverImg.data?.attributes.formats.small.width}
+            height={attributes.coverImg.data?.attributes.formats.small.height}
             className={isFull ? css.full.coverImg : css.preview.coverImg}
             alt={attributes.coverImg.data.attributes.alternativeText}
           />

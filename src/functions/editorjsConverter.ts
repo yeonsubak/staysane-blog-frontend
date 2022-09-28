@@ -1,4 +1,4 @@
-import { IEditorJSArticle, IPostAttr } from "../types/blogtypes";
+import { IEditorJSArticle } from "../types/blogtypes";
 
 export async function editorjsConverter(article: string) {
   let htmlArr: Array<string> = [];

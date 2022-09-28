@@ -9,7 +9,7 @@ const TopNavBar = () => {
   return (
     <>
       <div className="flex flex-row">
-        <Link href="https://blog.staysane.me">
+        <Link href="/about">
           <a>
             <StaysaneLogo />
           </a>
