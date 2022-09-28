@@ -20,6 +20,7 @@ const BlogPost = (props: IPropsBlogPost) => {
     preview: {
       postBox:
         "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[520px]",
+      coverImg: `h-16 object-contain object-center bg-[${attributes.coverImgBGColor}]`,
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
@@ -29,6 +30,7 @@ const BlogPost = (props: IPropsBlogPost) => {
     full: {
       postBox:
         "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
+      coverImg: `h-32 object-contain object-center bg-[${attributes.coverImgBGColor}]`,
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
@@ -49,12 +51,12 @@ const BlogPost = (props: IPropsBlogPost) => {
       <div
         className={isFull ? css.full.postHeaderBox : css.preview.postHeaderBox}
       >
-        <div className="w-full">
+        <div>
           <Image
             src={attributes.coverImg.data?.attributes.formats.medium.url}
             width={attributes.coverImg.data?.attributes.formats.medium.width}
             height={attributes.coverImg.data?.attributes.formats.medium.height}
-            className="coverImg object-cover object-center h-32"
+            className={isFull ? css.full.coverImg : css.preview.coverImg}
             alt={attributes.coverImg.data.attributes.alternativeText}
           />
         </div>
@@ -115,7 +117,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             </button>
           ))}
         </div>
-        <div className="avatarBox m-auto pl-4 flex flex-row items-center gap-2 py-4 text-sm sm:m-0 sm:ml-auto sm:py-0 sm:text-base">
+        <div className="avatarBox m-auto flex flex-row items-center gap-2 py-4 pl-4 text-sm sm:m-0 sm:ml-auto sm:py-0 sm:text-base">
           <Image
             src={
               attributes.author.data.attributes.profileImg.data.attributes
@@ -124,7 +126,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             alt="Profile image of the blog owner."
             width={40}
             height={40}
-            className="rounded-full w-8 h-8 sm:w-10 sm:h-10"
+            className="h-8 w-8 rounded-full sm:h-10 sm:w-10"
           />
           <p className="font-semibold">
             {attributes.author.data.attributes.name}

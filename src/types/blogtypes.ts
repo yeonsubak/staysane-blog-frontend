@@ -31,6 +31,7 @@ export interface IPostAttr {
   updatedAt: string;
   publishedAt: string;
   locale: string;
+  coverImgBGColor: string;
   coverImg: ICoverImg;
   localizations: string;
   author: IAuthor;
