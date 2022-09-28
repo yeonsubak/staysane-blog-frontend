@@ -17,6 +17,8 @@ export const getStaticProps: GetStaticProps = async () => {
     data.attributes.article = parsedArticle;
   });
 
+  // console.log(rvsData[0].attributes.coverImg.data.attributes.url)
+
   return await {
     props: {
       data: rvsData,

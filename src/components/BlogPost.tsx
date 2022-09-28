@@ -15,21 +15,22 @@ const BlogPost = (props: IPropsBlogPost) => {
   const coverImg = props.coverImg;
   const parsedArticle = parse(article);
 
+  // console.log(attributes.coverImg.data.attributes.formats.thumbnail.url)
+
   const css = {
     preview: {
       postBox:
-        "mt-2 flex flex-col max-w-[768px] h-[384px]  gap-6 bg-white px-10 py-9 shadow-lg sm:min-w-[520px]",
-      postBody: "line-clamp-4 keep-all leading-loose",
-      imageBox: "w-full sm:shrink-0 bg-teal-600 sm:h-24 sm:w-24",
-      postHeaderBox: "flex flex-col items-center sm:flex-row",
+        "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 shadow-lg sm:min-w-[520px]",
+      imageBox: "w-full",
+      postHeaderBox: "flex flex-col items-center",
       postHeader:
-        "keep-all -mt-1 h-20 text-lg font-semibold sm:text-[1.8rem] sm:leading-10",
-      postInfoBox: "flex flex-row gap-4 pt-[0.375rem] text-xs",
+        "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
+      postInfoBox:
+        "flex flex-col items-center sm:flex sm:flex-row sm:gap-4 text-xs",
     },
     full: {
       postBox:
         "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
-      postBody: "-m-3 keep-all leading-loose sm:m-0",
       imageBox: "w-full",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
@@ -54,14 +55,22 @@ const BlogPost = (props: IPropsBlogPost) => {
         <div className={isFull ? css.full.imageBox : css.preview.imageBox}>
           {isFull ? (
             <Image
-              src={coverImg.data?.attributes.url}
-              width={attributes.coverImg.data?.attributes.width}
-              height={attributes.coverImg.data?.attributes.height}
+              src={attributes.coverImg.data?.attributes.formats.medium.url}
+              width={attributes.coverImg.data?.attributes.formats.medium.width}
+              height={
+                attributes.coverImg.data?.attributes.formats.medium.height
+              }
               className="object-cover object-center"
               alt={""}
             />
           ) : (
-            ""
+            <Image
+              src={attributes.coverImg.data?.attributes.formats.small.url}
+              width={attributes.coverImg.data?.attributes.formats.small.width}
+              height={attributes.coverImg.data?.attributes.formats.small.height}
+              className="object-fill"
+              alt={""}
+            />
           )}
         </div>
         <div className="ml-2 sm:ml-4">
@@ -101,23 +110,27 @@ const BlogPost = (props: IPropsBlogPost) => {
           </div>
         </div>
       </div>
-      <div className="px-4">
-        <div className={isFull ? css.full.postBody : css.preview.postBody}>
-          {parsedArticle}
+      {isFull ? (
+        <div className="px-2 sm:px-4">
+          <div className="keep-all -m-3 leading-loose sm:m-0">
+            {parsedArticle}
+          </div>
         </div>
-      </div>
+      ) : (
+        ""
+      )}
       <div className="postBoxFooter flex flex-row flex-wrap">
         <div className="hashtagBox m-auto flex gap-6 font-semibold sm:m-0">
           {attributes.hashtags.data.map((data, idx) => (
             <button
               key={idx}
-              className="shrink bg-gray-50 px-3 py-2 text-sm shadow-md"
+              className="shrink bg-gray-50 px-3 py-2 text-xs shadow-md sm:text-sm"
             >
               {`# ${data.attributes.hashtag}`}
             </button>
           ))}
         </div>
-        <div className="avatarBox m-auto flex flex-row items-center gap-2 py-4 sm:m-0 sm:ml-auto sm:py-0">
+        <div className="avatarBox m-auto flex flex-row items-center gap-2 py-4 text-sm sm:m-0 sm:ml-auto sm:py-0 sm:text-base">
           <Image
             src={
               attributes.author.data.attributes.profileImg.data.attributes
@@ -126,7 +139,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             alt="Profile image of the blog owner."
             width={40}
             height={40}
-            className="rounded-full text-xs line-clamp-1"
+            className="rounded-full sm:h-full sm:w-full"
           />
           <p className="font-semibold">
             {attributes.author.data.attributes.name}

@@ -11,13 +11,13 @@
 /* Editor.js Mobile CSS - prefix: 'edjs-'*/
 .edjs-h2 {
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   line-height: 1.5rem;
   margin: 1rem 0 0.5rem 0;
 }
 
 .edjs-p {
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .edjs-caption {
@@ -38,17 +38,17 @@
 
 .edjs-warning-title {
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
 }
 
 .edjs-warning-message {
   padding-left: 1.2rem;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
 }
 
 .edjs-list-ul {
   padding-left: 0.6rem;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   list-style-type: disc;
   list-style-position: inside;
 }
