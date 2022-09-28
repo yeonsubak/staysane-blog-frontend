@@ -17,8 +17,8 @@
 }
 
 .edjs-p {
-    font-size: 0.75rem;
-  }
+  font-size: 0.75rem;
+}
 
 .edjs-caption {
   padding-top: 3px;
@@ -62,6 +62,10 @@
     margin: 0.5rem 0;
   }
 
+  .edjs-p {
+    font-size: 1rem;
+  }
+
   .edjs-caption {
     padding-top: 3px;
     color: #737373;
@@ -84,11 +88,17 @@
   }
 
   .edjs-warning-message {
+    padding-left: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .edjs-warning-message {
     padding-left: 1.5rem;
   }
 
   .edjs-list-ul {
     padding-left: 0.95rem;
+    font-size: 1rem;
     list-style-type: disc;
     list-style-position: inside;
   }
