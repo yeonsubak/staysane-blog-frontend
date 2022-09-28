@@ -16,13 +16,12 @@ export const getStaticProps: GetStaticProps = async () => {
   return await {
     props: {
       data: data,
-      profileImg: data.attributes.profileImg.data,
       article: article,
     },
   };
 };
 
-const About = ({ data, profileImg, article }: any) => {
+const About = ({ data, article }: GetAbout) => {
   const parsedArticle = parse(article);
 
   return (
@@ -30,15 +29,18 @@ const About = ({ data, profileImg, article }: any) => {
       <Head>
         <title>About | Stay Sane, Think Straight.</title>
       </Head>
-      <div className="mb-6 flex max-w-[768px] flex-col items-center bg-white px-6 sm:px-10 py-8 sm:py-12 shadow-lg sm:min-w-[680px]">
+      <div className="mb-6 flex max-w-[768px] flex-col items-center bg-white px-6 py-8 shadow-lg sm:min-w-[680px] sm:px-10 sm:py-12">
         <div className="h-80 w-80">
           <Image
             className="rounded-full"
-            alt="profile image"
-            src={profileImg.attributes.url}
-            width={profileImg.attributes.width}
-            height={profileImg.attributes.height}
-            layout="intrinsic"
+            alt={data.attributes.profileImg.data.attributes.alternativeText}
+            src={data.attributes.profileImg.data.attributes.formats.medium.url}
+            width={
+              data.attributes.profileImg.data.attributes.formats.medium.width
+            }
+            height={
+              data.attributes.profileImg.data.attributes.formats.medium.height
+            }
             objectFit="cover"
             objectPosition="top"
           />

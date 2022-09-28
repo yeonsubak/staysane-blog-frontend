@@ -1,12 +1,13 @@
-import { IMediaAttr } from './blogtypes';
+import { IMediaAttr } from "./blogtypes";
 
 export interface GetAbout {
-  data: IAbout
+  data: IAbout;
+  article: string;
 }
 
 export interface IAbout {
   id: number;
-  attributes: IAboutAttr
+  attributes: IAboutAttr;
 }
 
 export interface IAboutAttr {
@@ -15,7 +16,7 @@ export interface IAboutAttr {
   updatedAt: string;
   publishedAt: string;
   locale: string;
-  profileImg: ProfileImgData
+  profileImg: ProfileImgData;
 }
 
 export interface ProfileImgData {
