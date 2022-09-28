@@ -30,7 +30,7 @@ const About = ({ data, profileImg, article }: any) => {
       <Head>
         <title>About | Stay Sane, Think Straight.</title>
       </Head>
-      <div className="mb-6 flex max-w-[768px] flex-col items-center bg-white px-10 pt-16 pb-12 shadow-lg md:min-w-[680px]">
+      <div className="mb-6 flex max-w-[768px] flex-col items-center bg-white px-6 sm:px-10 py-8 sm:py-12 shadow-lg sm:min-w-[680px]">
         <div className="h-80 w-80">
           <Image
             className="rounded-full"
@@ -43,7 +43,7 @@ const About = ({ data, profileImg, article }: any) => {
             objectPosition="top"
           />
         </div>
-        <div className="px-4 py-4">{parsedArticle}</div>
+        <div className="keep-all sm:px-4 sm:py-4">{parsedArticle}</div>
       </div>
     </div>
   );
