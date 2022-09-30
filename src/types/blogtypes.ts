@@ -36,6 +36,7 @@ export interface IPostAttr {
   localizations: string;
   author: IAuthor;
   hashtags: IHashtag;
+  readTime: number;
 }
 
 export interface ICoverImg {

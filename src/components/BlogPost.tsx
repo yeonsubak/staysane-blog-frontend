@@ -86,7 +86,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             <div className="flex flex-row items-center gap-3">
               <div className="flex flex-row items-center gap-1">
                 <BookIcon />
-                2분 분량
+                {`${attributes.readTime}분 분량`}
               </div>
               <div className="flex flex-row items-center gap-1">
                 <CommentIcon />2
