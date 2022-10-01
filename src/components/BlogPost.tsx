@@ -12,20 +12,23 @@ const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;
   const attributes = props.attributes;
   const isFull = props.isFull;
-  const article = props.article;
+  const article = props.article
+    // configuration for custom layout inside lists.
+    .replaceAll(
+      "(edjs-code-block-open)",
+      '<div class="edjs-code">'
+    )
+    .replaceAll("(edjs-code-block-end)", "</div></div>");
   const parsedArticle = parse(article);
-  // console.log(parsedArticle)
 
   const css = {
     preview: {
       postBox:
-        "mt-2 flex flex-col max-w-[768px] gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[640px]",
+        "mt-2 flex flex-col max-w-[768px] gap-2 sm:gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[640px]",
       coverImg: "h-16 w-auto object-contain object-center",
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
-      postInfoBox:
-        "flex flex-col items-center sm:flex sm:flex-row sm:gap-4 text-xs",
     },
     full: {
       postBox:
@@ -34,16 +37,21 @@ const BlogPost = (props: IPropsBlogPost) => {
       postHeaderBox: "flex flex-col items-center",
       postHeader:
         "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
-      postInfoBox:
-        "flex flex-col items-center sm:flex sm:flex-row sm:gap-4 text-xs",
     },
   };
 
+  // Convert datetime format
   const dateTime = (date: string) => {
+    function addZero(datetime: string) {
+      return datetime.padStart(2, "0");
+    }
+
     const dt = new Date(date);
-    return `${dt.toLocaleDateString("ko-KR")} ${dt.toLocaleTimeString(
-      "ko-KR"
-    )}`;
+    return `${dt.getFullYear()}-${addZero(
+      (dt.getMonth() + 1).toString()
+    )}-${addZero(dt.getDate().toString())} ${addZero(
+      dt.getHours().toString()
+    )}:${addZero(dt.getMinutes().toString())}`;
   };
 
   return (
@@ -53,7 +61,7 @@ const BlogPost = (props: IPropsBlogPost) => {
       >
         <div
           className="flex w-full justify-center"
-          style={{backgroundColor: attributes.coverImgBGColor}}
+          style={{ backgroundColor: attributes.coverImgBGColor }}
         >
           <Image
             src={attributes.coverImg.data?.attributes.formats.small.url}
@@ -75,27 +83,26 @@ const BlogPost = (props: IPropsBlogPost) => {
               </h2>
             </a>
           </Link>
-          <div
-            className={isFull ? css.full.postInfoBox : css.preview.postInfoBox}
-          >
-            <div className="flex flex-row items-center gap-1">
+          <div className="text-center text-xs">
+            <div className="mr-2 inline-block">
               <>
                 <DateIcon />
-                {dateTime(attributes.publishedAt)}
+                <span className="ml-1 inline-block">
+                  {dateTime(attributes.publishedAt)}
+                </span>
               </>
             </div>
-            <div className="flex flex-row items-center gap-3">
-              <div className="flex flex-row items-center gap-1">
-                <BookIcon />
-                {`${attributes.readTime}분 분량`}
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <CommentIcon />2
-              </div>
-              <div className="flex flex-row items-center gap-1">
-                <ViewIcon />
-                365
-              </div>
+            <div className="mr-2 inline-block">
+              <BookIcon />
+              <span className="ml-1 inline-block">{`${attributes.readTime}분 분량`}</span>
+            </div>
+            <div className="mr-2 inline-block">
+              <CommentIcon />
+              <span className="ml-1 inline-block">0</span>
+            </div>
+            <div className="mr-2 inline-block">
+              <ViewIcon />
+              <span className="ml-1 inline-block">0</span>
             </div>
           </div>
         </div>

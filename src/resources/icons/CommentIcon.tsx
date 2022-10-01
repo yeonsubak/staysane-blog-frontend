@@ -5,9 +5,10 @@ const CommentIcon = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="12"
-      height="11"
+      height="14"
       fill="none"
-      viewBox="0 0 12 11"
+      viewBox="0 2 12 11"
+      className="inline"
     >
       <path
         fill="#357266"

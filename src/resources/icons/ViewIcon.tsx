@@ -5,9 +5,10 @@ const ViewIcon = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="15"
-      height="11"
+      height="15"
       fill="none"
-      viewBox="0 0 15 11"
+      viewBox="0 2 15 11"
+      className="inline"
     >
       <path
         fill="#357266"

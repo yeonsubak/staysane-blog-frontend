@@ -1,4 +1,5 @@
 /* Editor.js Mobile CSS - prefix: 'edjs-'*/
+
 h2.edjs-header {
   font-weight: 700;
   font-size: 1.25rem;
@@ -64,7 +65,7 @@ ul.edjs-list {
   border-collapse: collapse;
   width: 100%;
   height: 100%;
-  text-align: left
+  text-align: left;
 }
 
 .edjs-table-th {
@@ -95,6 +96,29 @@ ul.edjs-list {
 
 .edjs-table-td:last-child {
   border-right: none;
+}
+
+.edjs-code {
+  max-width: 320px;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  background-color: #121234;
+  font-size: 0.83rem;
+  color: white;
+  font-family: D2Coding;
+  white-space: pre;
+  overflow-x: scroll;
+}
+
+.inline-code {
+  padding: 0 0.4rem;
+  border-radius: 0.25rem;
+  background-color: #e5e2f5;
+  font-size: 0.83rem;
+  color: #373db4;
+  font-family: D2Coding;
+  font-style: italic;
 }
 
 /* Editor.js Desktop CSS - prefix: 'edjs-'*/
@@ -152,5 +176,18 @@ ul.edjs-list {
     font-size: 1rem;
     list-style-type: disc;
     list-style-position: inside;
+  }
+
+  .edjs-code {
+    max-width: 100%;
+    margin: 1rem 1rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: #121234;
+    font-size: 0.83rem;
+    color: white;
+    font-family: D2Coding;
+    white-space: pre;
+    overflow-x: scroll;
   }
 }

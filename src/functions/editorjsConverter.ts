@@ -41,7 +41,7 @@ export async function editorjsConverter(article: string) {
         break;
 
       case "list":
-        if (block.data.style === 'ordered') {
+        if (block.data.style === "ordered") {
           htmlArr.push(`<ol class="edjs-list">`);
         } else {
           htmlArr.push(`<ul class="edjs-list">`);
@@ -49,7 +49,7 @@ export async function editorjsConverter(article: string) {
         block.data.items.map((item) => {
           htmlArr.push(`<li>${item}</li>`);
         });
-        if (block.data.style === 'ordered') {
+        if (block.data.style === "ordered") {
           htmlArr.push(`</ol>`);
         } else {
           htmlArr.push(`</ul">`);
