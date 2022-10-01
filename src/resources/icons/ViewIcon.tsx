@@ -8,7 +8,7 @@ const ViewIcon = () => {
       height="15"
       fill="none"
       viewBox="0 2 15 11"
-      className="inline"
+      className="inline-block"
     >
       <path
         fill="#357266"

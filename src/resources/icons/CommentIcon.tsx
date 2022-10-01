@@ -8,7 +8,7 @@ const CommentIcon = () => {
       height="14"
       fill="none"
       viewBox="0 2 12 11"
-      className="inline"
+      className="inline-block"
     >
       <path
         fill="#357266"
