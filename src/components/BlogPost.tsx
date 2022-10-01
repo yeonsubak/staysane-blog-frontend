@@ -6,7 +6,6 @@ import ViewIcon from "../resources/icons/ViewIcon";
 import { IPropsBlogPost } from "../types/blogtypes";
 import parse from "html-react-parser";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;

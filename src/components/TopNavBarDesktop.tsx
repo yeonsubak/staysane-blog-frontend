@@ -3,11 +3,9 @@ import StaysaneLogo from "../resources/img/StaysaneLogo";
 import { Twirl as Hamburger } from "hamburger-react";
 import Link from "next/link";
 
-const TopNavBar = () => {
-  const [isOpen, setOpen] = useState(false);
+const TopNavBarDesktop = () => {
 
   return (
-    <>
       <div className="flex flex-row">
         <Link href="/about">
           <a>
@@ -25,29 +23,10 @@ const TopNavBar = () => {
             <Link href="https://github.com/yeonsubak">Github</Link>
           </li>
         </ul>
-        <div className="ml-auto block md:hidden">
-          <Hamburger toggled={isOpen} toggle={setOpen} />
+        <div className="ml-auto block md:hidden z-20">
         </div>
       </div>
-      {isOpen ? (
-        <div className="mt-4 md:hidden">
-          <ul className="flex flex-col gap-2 pr-8">
-            <li>
-              <Link href="/about">About</Link>
-            </li>
-            <li>
-              <Link href="/post">Blog</Link>
-            </li>
-            <li>
-              <Link href="https://github.com/yeonsubak">Github</Link>
-            </li>
-          </ul>
-        </div>
-      ) : (
-        ""
-      )}
-    </>
   );
 };
 
-export default TopNavBar;
+export default TopNavBarDesktop;
