@@ -3,7 +3,6 @@ import { IEditorJSArticle } from "../types/blogtypes";
 export async function editorjsConverter(article: string) {
   let htmlArr: Array<string> = [];
   const parsed: IEditorJSArticle = await JSON.parse(article);
-  console.log(parsed.blocks[18].data.style);
 
   await parsed.blocks.map((block) => {
     const expr = block.type;

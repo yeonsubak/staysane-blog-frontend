@@ -44,25 +44,72 @@ h3.edjs-header {
 }
 
 ol.edjs-list {
-  padding-left: 0.6rem;
+  padding-left: 2rem;
   font-size: 0.95rem;
   list-style-type: decimal;
-  list-style-position: inside;
+  list-style-position: outside;
 }
 
 ul.edjs-list {
   padding-left: 0.6rem;
   font-size: 0.95rem;
   list-style-type: disc;
-  list-style-position: inside;
+  list-style-position: outside;
+}
+
+.edjs-table {
+  table-layout: auto;
+  border-top: 2px solid #dbdbdb;
+  border-bottom: 2px solid #dbdbdb;
+  border-collapse: collapse;
+  width: 100%;
+  height: 100%;
+  text-align: left
+}
+
+.edjs-table-th {
+  padding-left: 1rem;
+  border-bottom: 2px solid #dbdbdb;
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+}
+
+.edjs-table-th:first-child {
+  border-left: none;
+}
+
+.edjs-table-th:last-child {
+  border-right: none;
+}
+
+.edjs-table-td {
+  padding-left: 1rem;
+  border-bottom: 1px solid #ebebeb;
+  border-left: 1px solid #ebebeb;
+  border-right: 1px solid #ebebeb;
+}
+
+.edjs-table-td:first-child {
+  border-left: none;
+}
+
+.edjs-table-td:last-child {
+  border-right: none;
 }
 
 /* Editor.js Desktop CSS - prefix: 'edjs-'*/
 @media (min-width: 640px) {
-  .edjs-h2 {
+  h2.edjs {
     font-weight: 700;
     font-size: 1.5rem; /* 24px */
     line-height: 2rem; /* 32px */
+    margin: 0.5rem 0;
+  }
+
+  h3.edjs {
+    font-weight: 700;
+    font-size: 1.35rem;
+    line-height: 2rem;
     margin: 0.5rem 0;
   }
 
