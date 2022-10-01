@@ -1,4 +1,5 @@
 import "/styles/globals.css";
+import "/styles/edjs.css"
 import type { AppProps } from "next/app";
 import TopNavBar from "../components/TopNavBar";
 

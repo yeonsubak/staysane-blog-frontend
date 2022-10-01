@@ -161,6 +161,7 @@ export interface IEditorJSData {
   withBorder: boolean;
   message: string;
   title: string;
+  style: string;
   items: string[];
   withHeadings: boolean;
   content: Array<string[]>;

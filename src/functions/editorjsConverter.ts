@@ -3,10 +3,7 @@ import { IEditorJSArticle } from "../types/blogtypes";
 export async function editorjsConverter(article: string) {
   let htmlArr: Array<string> = [];
   const parsed: IEditorJSArticle = await JSON.parse(article);
-  // console.log(parsed.blocks)
-
-  // console.log(article.replaceAll('\\n', '<br>').replaceAll('\\n\\n', '<br><br>'))
-  // console.log('\\n')
+  console.log(parsed.blocks[18].data.style);
 
   await parsed.blocks.map((block) => {
     const expr = block.type;
@@ -14,7 +11,7 @@ export async function editorjsConverter(article: string) {
     switch (expr) {
       case "header":
         htmlArr.push(
-          `<h${block.data.level.toString()} class="edjs-h2">${
+          `<h${block.data.level.toString()} class="edjs-header">${
             block.data.text
           }</h${block.data.level.toString()}>`
         );
@@ -45,13 +42,19 @@ export async function editorjsConverter(article: string) {
         break;
 
       case "list":
-        htmlArr.push(`<ul class="edjs-list-ul">`);
-        if (Array.isArray(block.data.content) && block.data.withHeadings) {
-          block.data.items.map((item) => {
-            htmlArr.push(`<li>${item}</li>`);
-          });
+        if (block.data.style === 'ordered') {
+          htmlArr.push(`<ol class="edjs-list">`);
+        } else {
+          htmlArr.push(`<ul class="edjs-list">`);
         }
-        htmlArr.push(`</ul>`);
+        block.data.items.map((item) => {
+          htmlArr.push(`<li>${item}</li>`);
+        });
+        if (block.data.style === 'ordered') {
+          htmlArr.push(`</ol>`);
+        } else {
+          htmlArr.push(`</ul">`);
+        }
         break;
 
       case "table":
@@ -83,11 +86,11 @@ export async function editorjsConverter(article: string) {
         break;
 
       case "code":
-        htmlArr.push(`<div class="edjs-code">`)
-        htmlArr.push(`<p>${block.data.code}</p>`)
-        htmlArr.push(`</div>`)
+        htmlArr.push(`<div class="edjs-code">`);
+        htmlArr.push(`<p>${block.data.code}</p>`);
+        htmlArr.push(`</div>`);
         break;
-        
+
       default:
         htmlArr.push(`<div>Undefined block type: ${block.type}</div>`);
     }
