@@ -164,6 +164,7 @@ export interface IEditorJSData {
   items: string[];
   withHeadings: boolean;
   content: Array<string[]>;
+  code: string;
 }
 
 export interface IEditorJSImg {
