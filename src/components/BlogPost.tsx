@@ -14,6 +14,7 @@ const BlogPost = (props: IPropsBlogPost) => {
   const isFull = props.isFull;
   const article = props.article;
   const parsedArticle = parse(article);
+  // console.log(parsedArticle)
 
   const css = {
     preview: {
