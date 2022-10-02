@@ -13,11 +13,8 @@ const BlogPost = (props: IPropsBlogPost) => {
   const isFull = props.isFull;
   const article = props.article
     // configuration for custom layout inside lists.
-    .replaceAll(
-      "(edjs-code-block-open)",
-      '<div class="edjs-code">'
-    )
-    .replaceAll("(edjs-code-block-end)", "</div></div>");
+    .replaceAll("(edjs-code-block-open)", '<div class="edjs-code">')
+    .replaceAll("(edjs-code-block-end)", "</div>");
   const parsedArticle = parse(article);
 
   const css = {
@@ -40,18 +37,18 @@ const BlogPost = (props: IPropsBlogPost) => {
   };
 
   // Convert datetime format
-  const dateTime = (date: string) => {
-    function addZero(datetime: string) {
-      return datetime.padStart(2, "0");
-    }
+  // const dateTime = (date: string) => {
+  //   function addZero(datetime: string) {
+  //     return datetime.padStart(2, "0");
+  //   }
 
-    const dt = new Date(date);
-    return `${dt.getFullYear()}-${addZero(
-      (dt.getMonth() + 1).toString()
-    )}-${addZero(dt.getDate().toString())} ${addZero(
-      dt.getHours().toString()
-    )}:${addZero(dt.getMinutes().toString())}`;
-  };
+  //   const dt = new Date(date);
+  //   return `${dt.getFullYear()}-${addZero(
+  //     (dt.getMonth() + 1).toString()
+  //   )}-${addZero(dt.getDate().toString())} ${addZero(
+  //     dt.getHours().toString()
+  //   )}:${addZero(dt.getMinutes().toString())}`;
+  // };
 
   return (
     <div className={isFull ? css.full.postBox : css.preview.postBox}>
@@ -73,13 +70,13 @@ const BlogPost = (props: IPropsBlogPost) => {
         <div className="ml-2 sm:ml-4">
           <Link href={`/post/${id.toString()}`}>
             <a>
-              <h2
+              <h1
                 className={
                   isFull ? css.full.postHeader : css.preview.postHeader
                 }
               >
                 {attributes.title}
-              </h2>
+              </h1>
             </a>
           </Link>
           <div className="text-center text-xs">
@@ -87,7 +84,8 @@ const BlogPost = (props: IPropsBlogPost) => {
               <>
                 <DateIcon />
                 <span className="ml-1 inline-block">
-                  {dateTime(attributes.publishedAt)}
+                  {/* {dateTime(attributes.publishedAt)} */}
+                  {'2022-09-25T17:11:02.179Z'}
                 </span>
               </>
             </div>
