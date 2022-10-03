@@ -5,6 +5,7 @@ import TopNavBarDesktop from "../components/TopNavBarDesktop";
 import { useState } from "react";
 import { Twirl as Hamburger } from "hamburger-react";
 import TopNavBarMobile from "../components/TopNavBarMobile";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Hamburger toggled={isOpen} toggle={setOpen} />
           </div>
         </div>
+        <GoogleAnalytics strategy="lazyOnload" trackPageViews />
         <Component {...pageProps} />
       </div>
     </div>
