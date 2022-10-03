@@ -55,7 +55,7 @@ const BlogPost = (props: IPropsBlogPost) => {
       )}:${addZero(dt.getMinutes().toString())}`;
     };
     setDate(dateTime(attributes.publishedAt));
-  }, []);
+  }, [date]);
 
   return (
     <div className={isFull ? css.full.postBox : css.preview.postBox}>
