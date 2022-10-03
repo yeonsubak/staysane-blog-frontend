@@ -1,5 +1,19 @@
 /* Editor.js Mobile CSS - prefix: 'edjs-'*/
 
+div.edjscss a {
+  text-decoration-line: underline;
+  text-decoration-thickness: from-font;
+  text-underline-offset: 3px;
+}
+
+div.edjscss a:hover {
+  font-style: italic;
+}
+
+div.edjscss a:visited {
+  color: rgb(55 48 163);
+}
+
 h2.edjs-header {
   font-weight: 700;
   font-size: 1.25rem;

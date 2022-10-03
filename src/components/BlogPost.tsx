@@ -110,7 +110,7 @@ const BlogPost = (props: IPropsBlogPost) => {
       </div>
       {isFull ? (
         <div className="px-2 sm:px-4">
-          <div className="keep-all -m-3 leading-loose sm:m-0">
+          <div className="edjscss keep-all -m-3 leading-loose sm:m-0">
             {parsedArticle}
           </div>
         </div>
