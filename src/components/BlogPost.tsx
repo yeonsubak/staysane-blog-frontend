@@ -6,6 +6,7 @@ import ViewIcon from "../resources/icons/ViewIcon";
 import { IPropsBlogPost } from "../types/blogtypes";
 import parse from "html-react-parser";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;
@@ -36,19 +37,25 @@ const BlogPost = (props: IPropsBlogPost) => {
     },
   };
 
-  // Convert datetime format
-  // const dateTime = (date: string) => {
-  //   function addZero(datetime: string) {
-  //     return datetime.padStart(2, "0");
-  //   }
+  const [date, setDate] = useState<string>("");
 
-  //   const dt = new Date(date);
-  //   return `${dt.getFullYear()}-${addZero(
-  //     (dt.getMonth() + 1).toString()
-  //   )}-${addZero(dt.getDate().toString())} ${addZero(
-  //     dt.getHours().toString()
-  //   )}:${addZero(dt.getMinutes().toString())}`;
-  // };
+  function addZero(datetime: string) {
+    return datetime.padStart(2, "0");
+  }
+
+  useEffect(() => {
+    // Convert datetime format
+    const dateTime = (date: string) => {
+      const dt = new Date(date);
+
+      return `${dt.getFullYear()}-${addZero(
+        (dt.getMonth() + 1).toString()
+      )}-${addZero(dt.getDate().toString())} ${addZero(
+        dt.getHours().toString()
+      )}:${addZero(dt.getMinutes().toString())}`;
+    };
+    setDate(dateTime(attributes.publishedAt));
+  }, []);
 
   return (
     <div className={isFull ? css.full.postBox : css.preview.postBox}>
@@ -83,10 +90,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             <div className="mr-2 inline-block">
               <>
                 <DateIcon />
-                <span className="ml-1 inline-block">
-                  {/* {dateTime(attributes.publishedAt)} */}
-                  {'2022-09-25T17:11:02.179Z'}
-                </span>
+                <span className="ml-1 inline-block">{date}</span>
               </>
             </div>
             <div className="mr-2 inline-block">
