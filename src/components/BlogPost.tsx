@@ -38,6 +38,7 @@ const BlogPost = (props: IPropsBlogPost) => {
   };
 
   const [date, setDate] = useState<string>("");
+  const [view, setView] = useState<number>(0);
 
   function addZero(datetime: string) {
     return datetime.padStart(2, "0");
@@ -55,6 +56,7 @@ const BlogPost = (props: IPropsBlogPost) => {
       )}:${addZero(dt.getMinutes().toString())}`;
     };
     setDate(dateTime(attributes.publishedAt));
+    setView(attributes.view);
   }, [attributes.publishedAt]);
 
   return (
@@ -103,7 +105,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             </div>
             <div className="mr-2 inline-block">
               <ViewIcon />
-              <span className="ml-1 inline-block">{attributes.view}</span>
+              <span className="ml-1 inline-block">{view}</span>
             </div>
           </div>
         </div>
