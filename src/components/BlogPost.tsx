@@ -3,10 +3,11 @@ import BookIcon from "../resources/icons/BookIcon";
 import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
 import ViewIcon from "../resources/icons/ViewIcon";
-import { IPropsBlogPost } from "../types/blogtypes";
+import { IPropsBlogPost, ISinglePost } from "../types/blogtypes";
 import parse from "html-react-parser";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;
@@ -56,8 +57,14 @@ const BlogPost = (props: IPropsBlogPost) => {
       )}:${addZero(dt.getMinutes().toString())}`;
     };
     setDate(dateTime(attributes.publishedAt));
-    setView(attributes.view);
-  }, [attributes.publishedAt]);
+
+    // axios.get(`https://strapi.staysane.me/api/posts/${id}`).then((data)  => {
+    axios
+      .get<ISinglePost>(`http://localhost:8564/api/posts/${id}`)
+      .then(({ data }) => {
+        setView(data.data.attributes.view);
+      });
+  }, []);
 
   return (
     <div className={isFull ? css.full.postBox : css.preview.postBox}>
