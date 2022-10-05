@@ -1,7 +1,9 @@
 import axios from "axios";
+import { setCookie, getCookie, getCookies, hasCookie } from "cookies-next";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
+import { useEffect } from "react";
 import BlogPost from "../../components/BlogPost";
 import { editorjsConverter } from "../../functions/editorjsConverter";
 import { IAllPosts, ISinglePost } from "../../types/blogtypes";
@@ -31,12 +33,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return await {
     props: {
       data: data.data,
-      article: article
+      article: article,
     },
   };
 };
 
 const PostDetail = ({ data, article }: ISinglePost) => {
+
+  useEffect(() => {
+    if (!hasCookie(`readPost-${data.id}`)) {
+      //Increase number of views
+      axios.put(`https://strapi.staysane.me/api/posts/${data.id}`, {
+        data: {
+          view: data.attributes.view + 1,
+        },
+      });
+      // Set a cookie to prevent view increase while refreshing.
+      setCookie(`readPost-${data.id}`, true);
+    }
+  })
+
   return (
     <div className="mb-8 flex justify-center">
       <Head>

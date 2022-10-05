@@ -103,7 +103,7 @@ const BlogPost = (props: IPropsBlogPost) => {
             </div>
             <div className="mr-2 inline-block">
               <ViewIcon />
-              <span className="ml-1 inline-block">0</span>
+              <span className="ml-1 inline-block">{attributes.view}</span>
             </div>
           </div>
         </div>

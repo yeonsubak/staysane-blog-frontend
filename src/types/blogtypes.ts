@@ -37,6 +37,7 @@ export interface IPostAttr {
   author: IAuthor;
   hashtags: IHashtag;
   readTime: number;
+  view: number;
 }
 
 export interface ICoverImg {
