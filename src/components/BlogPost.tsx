@@ -106,10 +106,6 @@ const BlogPost = (props: IPropsBlogPost) => {
               <span className="ml-1 inline-block">{`${attributes.readTime}분 분량`}</span>
             </div>
             <div className="mr-2 inline-block">
-              <CommentIcon />
-              <span className="ml-1 inline-block">0</span>
-            </div>
-            <div className="mr-2 inline-block">
               <ViewIcon />
               <span className="ml-1 inline-block">{view}</span>
             </div>
