@@ -5,6 +5,7 @@ import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
 import BlogPost from "../../components/BlogPost";
+import BlogPostNav from "../../components/BlogPostNav";
 import { editorjsConverter } from "../../functions/editorjsConverter";
 import { IAllPosts, ISinglePost } from "../../types/blogtypes";
 
@@ -39,7 +40,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const PostDetail = ({ data, article }: ISinglePost) => {
-
   useEffect(() => {
     if (!hasCookie(`readPost-${data.id}`)) {
       //Increase number of views
@@ -51,19 +51,22 @@ const PostDetail = ({ data, article }: ISinglePost) => {
       // Set a cookie to prevent view increase while refreshing.
       setCookie(`readPost-${data.id}`, true);
     }
-  })
+  });
 
   return (
     <div className="mb-8 flex justify-center">
       <Head>
         <title>{`${data.attributes.title} | Stay Sane, Think Straight`}</title>
       </Head>
-      <BlogPost
-        id={data.id}
-        attributes={data.attributes}
-        isFull={true}
-        article={article}
-      />
+      <div>
+        <BlogPost
+          id={data.id}
+          attributes={data.attributes}
+          isFull={true}
+          article={article}
+        />
+        <BlogPostNav />
+      </div>
     </div>
   );
 };
