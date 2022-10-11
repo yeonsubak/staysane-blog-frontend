@@ -1,6 +1,5 @@
 import Image from "next/future/image";
 import BookIcon from "../resources/icons/BookIcon";
-import CommentIcon from "../resources/icons/CommentIcon";
 import DateIcon from "../resources/icons/DateIcon";
 import ViewIcon from "../resources/icons/ViewIcon";
 import { IPropsBlogPost, ISinglePost } from "../types/blogtypes";

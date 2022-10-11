@@ -1,6 +1,4 @@
-import React, { useState } from "react";
 import StaysaneLogo from "../resources/img/StaysaneLogo";
-import { Twirl as Hamburger } from "hamburger-react";
 import Link from "next/link";
 
 const TopNavBarDesktop = () => {

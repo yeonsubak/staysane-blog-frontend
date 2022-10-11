@@ -2,7 +2,7 @@ import axios from "axios";
 import { GetStaticProps } from "next";
 import Image from "next/image";
 import { editorjsConverter } from "../functions/editorjsConverter";
-import { GetAbout, IAbout } from "../types/abouttypes";
+import { GetAbout } from "../types/abouttypes";
 import parse from "html-react-parser";
 import Head from "next/head";
 

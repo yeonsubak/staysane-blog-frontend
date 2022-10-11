@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setCookie, getCookie, getCookies, hasCookie } from "cookies-next";
+import { setCookie, hasCookie } from "cookies-next";
 import { GetStaticProps } from "next";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
