@@ -4,6 +4,7 @@ div.edjscss a {
   text-decoration-line: underline;
   text-decoration-thickness: from-font;
   text-underline-offset: 3px;
+  word-break: break-all;
 }
 
 div.edjscss a:hover {
@@ -83,33 +84,33 @@ ul.edjs-list {
   text-align: left;
 }
 
-.edjs-table-th {
+.edjs-table th {
   padding-left: 1rem;
   border-bottom: 2px solid #dbdbdb;
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
 }
 
-.edjs-table-th:first-child {
+.edjs-table th:first-child {
   border-left: none;
 }
 
-.edjs-table-th:last-child {
+.edjs-table th:last-child {
   border-right: none;
 }
 
-.edjs-table-td {
+.edjs-table td {
   padding-left: 1rem;
   border-bottom: 1px solid #ebebeb;
   border-left: 1px solid #ebebeb;
   border-right: 1px solid #ebebeb;
 }
 
-.edjs-table-td:first-child {
+.edjs-table td:first-child {
   border-left: none;
 }
 
-.edjs-table-td:last-child {
+.edjs-table td:last-child {
   border-right: none;
 }
 
