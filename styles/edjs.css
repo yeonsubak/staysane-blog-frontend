@@ -61,6 +61,8 @@ h3.edjs-header {
 }
 
 ol.edjs-list {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding-left: 2rem;
   font-size: 0.95rem;
   list-style-type: decimal;
@@ -68,6 +70,8 @@ ol.edjs-list {
 }
 
 ul.edjs-list {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding-left: 0.6rem;
   font-size: 0.95rem;
   list-style-type: disc;
@@ -184,7 +188,18 @@ ul.edjs-list {
     overflow-wrap: anywhere;
   }
 
-  .edjs-list-ul {
+  ol.edjs-list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.95rem;
+    font-size: 1rem;
+    list-style-type: decimal;
+    list-style-position: inside;
+  }
+
+  ul.edjs-list {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     padding-left: 0.95rem;
     font-size: 1rem;
     list-style-type: disc;
