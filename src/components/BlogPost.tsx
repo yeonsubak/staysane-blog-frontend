@@ -11,6 +11,7 @@ import axios from "axios";
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;
   const attributes = props.attributes;
+  const coverImg = attributes.coverImg.data;
   const isFull = props.isFull;
   const article = props.article
     // configuration for custom layout inside lists.
@@ -24,16 +25,12 @@ const BlogPost = (props: IPropsBlogPost) => {
         "mt-2 flex flex-col max-w-[768px] gap-2 sm:gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[640px]",
       coverImg: "h-16 w-auto object-contain object-center",
       postHeaderBox: "flex flex-col items-center",
-      postHeader:
-        "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
     },
     full: {
       postBox:
         "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
       coverImg: "h-32 w-auto object-contain object-center",
       postHeaderBox: "flex flex-col items-center",
-      postHeader:
-        "keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.8rem] sm:leading-10",
     },
   };
 
@@ -73,21 +70,29 @@ const BlogPost = (props: IPropsBlogPost) => {
           className="flex w-full justify-center"
           style={{ backgroundColor: attributes.coverImgBGColor }}
         >
-          <Image
-            src={attributes.coverImg.data?.attributes.formats.small.url}
-            width={attributes.coverImg.data?.attributes.formats.small.width}
-            height={attributes.coverImg.data?.attributes.formats.small.height}
-            className={isFull ? css.full.coverImg : css.preview.coverImg}
-            alt={attributes.coverImg.data.attributes.alternativeText}
-          />
+          {coverImg.attributes.formats === null ? (
+            <Image
+              src={coverImg.attributes.url}
+              width={coverImg.attributes.width}
+              height={coverImg.attributes.height}
+              className={isFull ? css.full.coverImg : css.preview.coverImg}
+              alt={coverImg.attributes.alternativeText}
+            />
+          ) : (
+            <Image
+              src={coverImg.attributes.formats.small.url}
+              width={coverImg.attributes.formats.small.width}
+              height={coverImg.attributes.formats.small.height}
+              className={isFull ? css.full.coverImg : css.preview.coverImg}
+              alt={coverImg.attributes.alternativeText}
+            />
+          )}
         </div>
         <div className="ml-2 sm:ml-4">
           <Link href={`/post/${id.toString()}`}>
             <a>
               <h1
-                className={
-                  isFull ? css.full.postHeader : css.preview.postHeader
-                }
+                className='keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.6rem] sm:leading-10'
               >
                 {attributes.title}
               </h1>
