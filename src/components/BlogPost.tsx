@@ -59,7 +59,7 @@ const BlogPost = (props: IPropsBlogPost) => {
       .then(({ data }) => {
         setView(data.data.attributes.view);
       });
-  }, []);
+  }, [attributes.publishedAt, id]);
 
   return (
     <div className={isFull ? css.full.postBox : css.preview.postBox}>
