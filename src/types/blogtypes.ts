@@ -153,6 +153,7 @@ export interface IEditorJSBlocks {
 }
 
 export interface IEditorJSData {
+  html: string;
   level: number;
   text: string;
   caption: string;

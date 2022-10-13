@@ -16,7 +16,9 @@ const BlogPost = (props: IPropsBlogPost) => {
   const article = props.article
     // configuration for custom layout inside lists.
     .replaceAll("(edjs-code-block-open)", '<div class="edjs-code">')
-    .replaceAll("(edjs-code-block-end)", "</div>");
+    .replaceAll("(edjs-code-block-end)", "</div>")
+    .replaceAll("(edjs-raw-open)", '<div class="edjs-raw">')
+    .replaceAll("(edjs-raw-end)", "</div>");
   const parsedArticle = parse(article);
 
   const css = {
@@ -91,9 +93,7 @@ const BlogPost = (props: IPropsBlogPost) => {
         <div className="ml-2 sm:ml-4">
           <Link href={`/post/${id.toString()}`}>
             <a>
-              <h1
-                className='keep-all py-4 text-[1.4rem] font-semibold text-center sm:text-[1.6rem] sm:leading-10'
-              >
+              <h1 className="keep-all py-4 text-center text-[1.4rem] font-semibold sm:text-[1.6rem] sm:leading-10">
                 {attributes.title}
               </h1>
             </a>

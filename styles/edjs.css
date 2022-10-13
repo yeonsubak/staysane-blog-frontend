@@ -79,6 +79,8 @@ ul.edjs-list {
 }
 
 .edjs-table {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   table-layout: auto;
   border-top: 2px solid #dbdbdb;
   border-bottom: 2px solid #dbdbdb;

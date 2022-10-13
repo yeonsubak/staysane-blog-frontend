@@ -90,6 +90,10 @@ export async function editorjsConverter(article: string) {
         htmlArr.push(`</div>`);
         break;
 
+      case "raw":
+        htmlArr.push(block.data.html);
+        break;
+
       default:
         htmlArr.push(`<div>Undefined block type: ${block.type}</div>`);
     }
