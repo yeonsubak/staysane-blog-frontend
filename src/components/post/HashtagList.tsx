@@ -38,14 +38,6 @@ const HashtagList = ({ hashtagList }: IPostIndex) => {
           {`#${hashtag} (${count})`}
         </button>
       ))}
-      {hashtagList.map(({ hashtag, count }, idx) => (
-        <button
-          key={idx}
-          className={`rounded-full border bg-white px-4 py-2 text-sm ${colorLoop()}`}
-        >
-          {`#${hashtag} (${count})`}
-        </button>
-      ))}
     </div>
   );
 };
