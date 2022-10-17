@@ -8,7 +8,7 @@ import BlogPost from "../components/BlogPost";
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(
-    `https://strapi.staysane.me/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
+    `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
   const { data }: IAllPosts = await res.data;
   const rvsData = await data.reverse();

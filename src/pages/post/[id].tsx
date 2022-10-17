@@ -9,7 +9,7 @@ import { editorjsConverter } from "../../functions/editorjsConverter";
 import { IAllPosts, ISinglePost } from "../../types/blogtypes";
 
 export async function getStaticPaths() {
-  const res = await axios.get(`https://strapi.staysane.me/api/posts`);
+  const res = await axios.get(`${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts`);
   const { data }: IAllPosts = await res.data;
 
   const paths = data.map((post) => ({
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = (context.params as ParsedUrlQuery).id;
   const res = await axios.get(
-    `https://strapi.staysane.me/api/posts/${id}?populate=coverImg&populate=author.profileImg&populate=hashtags`
+    `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts/${id}?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
   const data = await res.data;
   const article = await editorjsConverter(data.data.attributes.article);
@@ -43,7 +43,7 @@ const PostDetail = ({ data, article }: ISinglePost) => {
   useEffect(() => {
     if (!hasCookie(`readPost-${data.id}`)) {
       //Increase number of views
-      axios.put(`https://strapi.staysane.me/api/posts/${data.id}`, {
+      axios.put(`${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts/${data.id}`, {
         data: {
           view: data.attributes.view + 1,
         },
