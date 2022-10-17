@@ -4,7 +4,7 @@ import Link from "next/link";
 const TopNavBarDesktop = () => {
   return (
     <div className="flex flex-row">
-      <Link href="/post">
+      <Link href="/">
         <a>
           <StaysaneLogo />
         </a>
@@ -14,7 +14,7 @@ const TopNavBarDesktop = () => {
           <Link href="/about">About</Link>
         </li>
         <li>
-          <Link href="/post">Blog</Link>
+          <Link href="/">Blog</Link>
         </li>
         <li>
           <Link href="https://github.com/yeonsubak">Github</Link>
