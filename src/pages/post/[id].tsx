@@ -4,9 +4,9 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
 import { useEffect } from "react";
-import BlogPost from "../../components/BlogPost";
+import BlogPost from "../../components/post/BlogPost";
 import { editorjsConverter } from "../../functions/editorjsConverter";
-import { IAllPosts, ISinglePost } from "../../types/blogtypes";
+import { IAllPosts, ISinglePost } from "../../types/query.type";
 
 export async function getStaticPaths() {
   const res = await axios.get(`https://strapi.staysane.me/api/posts`);
@@ -39,7 +39,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const PostDetail = ({ data, article }: ISinglePost) => {
-
   useEffect(() => {
     if (!hasCookie(`readPost-${data.id}`)) {
       //Increase number of views
@@ -51,7 +50,7 @@ const PostDetail = ({ data, article }: ISinglePost) => {
       // Set a cookie to prevent view increase while refreshing.
       setCookie(`readPost-${data.id}`, true);
     }
-  })
+  });
 
   return (
     <div className="mb-8 flex justify-center">

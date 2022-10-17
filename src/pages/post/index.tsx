@@ -1,15 +1,21 @@
 import axios from "axios";
 import { GetStaticProps } from "next";
-import Head from "next/head";
-import BlogPost from "../../components/BlogPost";
+
 import { editorjsConverter } from "../../functions/editorjsConverter";
-import { IAllPosts } from "../../types/blogtypes";
+import { getHashtagList } from "../../graphql/graphqlQueries";
+import { IAllPosts, IPostIndex } from "../../types/query.type";
+
+import Head from "next/head";
+import BlogPost from "../../components/post/BlogPost";
+import HashtagList from "../../components/post/HashtagList";
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await axios.get(
+  // Post props
+  const postList = await axios.get(
     `https://strapi.staysane.me/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
   );
-  const { data }: IAllPosts = await res.data;
+
+  const { data }: IAllPosts = await postList.data;
   const rvsData = await data.reverse();
 
   await rvsData.map(async (data) => {
@@ -17,20 +23,25 @@ export const getStaticProps: GetStaticProps = async () => {
     data.attributes.article = parsedArticle;
   });
 
+  // Hashtag props
+  const hashtagList = await getHashtagList();
+
   return await {
     props: {
-      data: rvsData,
+      postList: rvsData,
+      hashtagList: hashtagList,
     },
   };
 };
 
-const Posts = ({ data }: IAllPosts) => {
+const Posts = ({ postList, hashtagList }: IPostIndex) => {
   return (
     <div className="flex flex-col items-center gap-4">
       <Head>
         <title>Blog | Stay Sane, Think Straight</title>
       </Head>
-      {data.map((data) => (
+      <HashtagList hashtagList={hashtagList} />
+      {postList?.map((data) => (
         <BlogPost
           key={data.id}
           id={data.id}

@@ -1,12 +1,15 @@
-import Image from "next/future/image";
-import BookIcon from "../resources/icons/BookIcon";
-import DateIcon from "../resources/icons/DateIcon";
-import ViewIcon from "../resources/icons/ViewIcon";
-import { IPropsBlogPost, ISinglePost } from "../types/blogtypes";
-import parse from "html-react-parser";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { IPropsBlogPost } from "../../types/blog.type";
+import { ISinglePost } from "../../types/query.type";
+
+import parse from "html-react-parser";
+import Link from "next/link";
+
+import Image from "next/future/image";
+import BookIcon from "../../resources/icons/BookIcon";
+import DateIcon from "../../resources/icons/DateIcon";
+import ViewIcon from "../../resources/icons/ViewIcon";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;

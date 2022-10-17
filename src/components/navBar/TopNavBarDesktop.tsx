@@ -1,4 +1,4 @@
-import StaysaneLogo from "../resources/img/StaysaneLogo";
+import StaysaneLogo from "../../resources/img/StaysaneLogo";
 import Link from "next/link";
 
 const TopNavBarDesktop = () => {

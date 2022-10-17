@@ -1,15 +1,4 @@
 // Posts-related interfaces
-export interface IAllPosts {
-  data: IPost[];
-  meta: IMeta;
-}
-
-export interface ISinglePost {
-  data: IPost;
-  meta: IMeta;
-  article: string;
-}
-
 export interface IPropsBlogPost {
   id: number;
   attributes: IPostAttr;
@@ -140,40 +129,3 @@ export interface IHashtagAttr {
   updatedAt: string;
 }
 
-// EditorJS Block Converter
-export interface IEditorJSArticle {
-  blocks: IEditorJSBlocks[];
-  time: Date;
-}
-
-export interface IEditorJSBlocks {
-  data: IEditorJSData;
-  id: string;
-  type: string;
-}
-
-export interface IEditorJSData {
-  html: string;
-  level: number;
-  text: string;
-  caption: string;
-  file: IEditorJSImg;
-  stretched: boolean;
-  withBackground: boolean;
-  withBorder: boolean;
-  message: string;
-  title: string;
-  style: string;
-  items: string[];
-  withHeadings: boolean;
-  content: Array<string[]>;
-  code: string;
-}
-
-export interface IEditorJSImg {
-  url: string;
-  alt: string;
-  width: number;
-  height: number;
-  mime: string;
-}
