@@ -1,3 +1,4 @@
+import { IHashtagAttr } from './../types/hashtag.type';
 import { gql } from "@apollo/client";
 import { IHashtagList } from "../types/hashtag.type";
 import client from "./apolloClient";
@@ -41,11 +42,11 @@ export async function getHashtagList() {
   return hashtagList;
 }
 
-export async function getPostsByHashtag() {
+export async function getPostsByHashtag(id: string | string[] | undefined) {
   const { data } = await client.query({
     query: gql`
     {
-      hashtags {
+      hashtag(id: ${id}) {
         data {
           id
           attributes {
@@ -59,6 +60,18 @@ export async function getPostsByHashtag() {
                   coverImgBGColor
                   readTime
                   publishedAt
+                  coverImg {
+                    data {
+                      id
+                      attributes {
+                        alternativeText
+                        url
+                        width
+                        height
+                        formats
+                      }
+                    }
+                  }
                   author {
                     data {
                       attributes {
@@ -92,5 +105,7 @@ export async function getPostsByHashtag() {
     `,
   });
 
-  return data
+  const queryResult: IHashtagAttr[] = await data.hashtag.data
+
+  return queryResult
 }

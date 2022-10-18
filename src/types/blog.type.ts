@@ -1,4 +1,4 @@
-// Posts-related interfaces
+import { IHashtagMultiple } from './hashtag.type';
 export interface IPropsBlogPost {
   id: number;
   attributes: IPostAttr;
@@ -24,7 +24,7 @@ export interface IPostAttr {
   coverImg: ICoverImg;
   localizations: string;
   author: IAuthor;
-  hashtags: IHashtag;
+  hashtags: IHashtagMultiple;
   readTime: number;
   view: number;
 }
@@ -111,21 +111,5 @@ export interface IProfileImg {
 export interface IProfileImgData {
   id: number;
   attributes: IMediaAttr;
-}
-
-// Hashtag-related interfaces
-export interface IHashtag {
-  data: IHashtagDatum[];
-}
-
-export interface IHashtagDatum {
-  id: number;
-  attributes: IHashtagAttr;
-}
-
-export interface IHashtagAttr {
-  hashtag: string;
-  createdAt: string;
-  updatedAt: string;
 }
 
