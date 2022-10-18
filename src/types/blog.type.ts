@@ -1,15 +1,4 @@
-// Posts-related interfaces
-export interface IAllPosts {
-  data: IPost[];
-  meta: IMeta;
-}
-
-export interface ISinglePost {
-  data: IPost;
-  meta: IMeta;
-  article: string;
-}
-
+import { IHashtagMultiple } from './hashtag.type';
 export interface IPropsBlogPost {
   id: number;
   attributes: IPostAttr;
@@ -35,7 +24,7 @@ export interface IPostAttr {
   coverImg: ICoverImg;
   localizations: string;
   author: IAuthor;
-  hashtags: IHashtag;
+  hashtags: IHashtagMultiple;
   readTime: number;
   view: number;
 }
@@ -124,56 +113,3 @@ export interface IProfileImgData {
   attributes: IMediaAttr;
 }
 
-// Hashtag-related interfaces
-export interface IHashtag {
-  data: IHashtagDatum[];
-}
-
-export interface IHashtagDatum {
-  id: number;
-  attributes: IHashtagAttr;
-}
-
-export interface IHashtagAttr {
-  hashtag: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-// EditorJS Block Converter
-export interface IEditorJSArticle {
-  blocks: IEditorJSBlocks[];
-  time: Date;
-}
-
-export interface IEditorJSBlocks {
-  data: IEditorJSData;
-  id: string;
-  type: string;
-}
-
-export interface IEditorJSData {
-  html: string;
-  level: number;
-  text: string;
-  caption: string;
-  file: IEditorJSImg;
-  stretched: boolean;
-  withBackground: boolean;
-  withBorder: boolean;
-  message: string;
-  title: string;
-  style: string;
-  items: string[];
-  withHeadings: boolean;
-  content: Array<string[]>;
-  code: string;
-}
-
-export interface IEditorJSImg {
-  url: string;
-  alt: string;
-  width: number;
-  height: number;
-  mime: string;
-}

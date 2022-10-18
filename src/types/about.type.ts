@@ -1,4 +1,4 @@
-import { IMediaAttr } from "./blogtypes";
+import { IMediaAttr } from "./blog.type";
 
 export interface GetAbout {
   data: IAbout;

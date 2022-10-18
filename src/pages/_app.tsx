@@ -1,10 +1,10 @@
 import "/styles/globals.css";
 import "/styles/edjs.css";
 import type { AppProps } from "next/app";
-import TopNavBarDesktop from "../components/TopNavBarDesktop";
+import TopNavBarDesktop from "../components/navBar/TopNavBarDesktop";
 import { useEffect, useState } from "react";
 import { Twirl as Hamburger } from "hamburger-react";
-import TopNavBarMobile from "../components/TopNavBarMobile";
+import TopNavBarMobile from "../components/navBar/TopNavBarMobile";
 import { useRouter } from "next/router";
 import * as gtag from "../lib/gtag";
 import Script from "next/script";
