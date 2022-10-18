@@ -51,7 +51,7 @@ export async function getPostsByHashtag(id: string | string[] | undefined) {
           id
           attributes {
             hashtag
-            posts {
+            posts (sort: "id:desc") {
               data {
                 id
                 attributes {
