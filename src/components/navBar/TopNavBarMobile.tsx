@@ -21,7 +21,7 @@ const TopNavBarMobile = ({ isOpen, setOpen }: IToggleProps) => {
             </Link>
           </li>
           <li className="border-b py-3 pl-4">
-            <Link href="/post" passHref>
+            <Link href="/" passHref>
               <a onClick={() => toggleBurger()}>Blog</a>
             </Link>
           </li>
