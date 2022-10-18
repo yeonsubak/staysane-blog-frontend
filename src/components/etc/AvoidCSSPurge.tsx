@@ -7,12 +7,12 @@ import React from "react";
 const AvoidCSSPurge = () => {
   return (
     <div className="hidden" id="avoid_css_purge">
-      <span className="border-pink-600 text-pink-600"></span>
-      <span className="border-cyan-600 text-cyan-600"></span>
-      <span className="border-sky-600 text-sky-600"></span>
-      <span className="border-fuchsia-600 text-fuchsia-600"></span>
-      <span className="border-rose-600 text-rose-600"></span>
-      <span className="border-amber-600 text-amber-600"></span>
+      <span className="border-pink-500 bg-pink-500 text-pink-500"></span>
+      <span className="border-cyan-500 bg-cyan-500 text-cyan-500"></span>
+      <span className="border-sky-500 bg-sky-500 text-sky-500"></span>
+      <span className="border-fuchsia-500 bg-fuchsia-500 text-fuchsia-500"></span>
+      <span className="border-rose-500 bg-rose-500 text-rose-500"></span>
+      <span className="border-amber-500 bg-amber-500 text-amber-500"></span>
     </div>
   );
 };

@@ -11,6 +11,7 @@ export interface IHashtagMultiple {
 
 export interface IHashtagSingle {
   data: IHashtagDatum;
+  hashtagList: IHashtagList[];
 }
 
 export interface IHashtagDatum {
