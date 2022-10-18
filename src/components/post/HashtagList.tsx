@@ -44,14 +44,14 @@ const HashtagList = ({ hashtagList }: IPostIndex) => {
   return (
     <div
       id="hashtagList"
-      className="flex max-w-[640px] shrink-0 flex-grow-0 flex-wrap gap-2 sm:min-w-[640px]"
+      className="flex max-w-[640px] shrink-0 flex-grow-0 flex-wrap gap-2 text-xs sm:text-sm sm:min-w-[640px]"
     >
       {hashtagList.map(({ hashtag, count, id }, idx) =>
         asPath === `/hashtag/${id}` ? (
           <Link key={idx} href={`/hashtag/${id}`}>
             <button
               id={`${hashtag.toLowerCase()}`}
-              className={`rounded-full border px-4 py-2 text-sm ${colorLoop(
+              className={`rounded-full border px-4 py-2 ${colorLoop(
                 "active"
               )}`}
             >
@@ -62,7 +62,7 @@ const HashtagList = ({ hashtagList }: IPostIndex) => {
           <Link key={idx} href={`/hashtag/${id}`}>
             <button
               id={`${hashtag.toLowerCase()}`}
-              className={`rounded-full border bg-white px-4 py-2 text-sm ${colorLoop(
+              className={`rounded-full border bg-white px-4 py-2 ${colorLoop(
                 "inactive"
               )}`}
             >
