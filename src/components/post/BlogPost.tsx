@@ -60,7 +60,7 @@ const BlogPost = (props: IPropsBlogPost) => {
     setDate(dateTime(attributes.publishedAt));
 
     axios
-      .get<ISinglePost>(`https://strapi.staysane.me/api/posts/${id}`)
+      .get<ISinglePost>(`${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts/${id}`)
       .then(({ data }) => {
         setView(data.data.attributes.view);
       });

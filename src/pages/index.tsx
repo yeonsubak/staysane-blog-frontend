@@ -1,11 +1,45 @@
-import type { NextPage } from "next";
+import { GetStaticProps } from "next";
+import Head from "next/head";
+import axios from "axios";
 
-const Home: NextPage = () => {
+import { editorjsConverter } from "../functions/editorjsConverter";
+import { IAllPosts } from "../types/query.type";
+import BlogPost from "../components/post/BlogPost";
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await axios.get(
+    `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts?populate=coverImg&populate=author.profileImg&populate=hashtags`
+  );
+  const { data }: IAllPosts = await res.data;
+  const rvsData = await data.reverse();
+
+  await rvsData.map(async (data) => {
+    const parsedArticle = await editorjsConverter(data.attributes.article);
+    data.attributes.article = parsedArticle;
+  });
+
+  return await {
+    props: {
+      data: rvsData,
+    },
+  };
+};
+
+const Home = ({ data }: IAllPosts) => {
   return (
-    <div className="mt-2 flex flex-row gap-8">
-      <div className="flex basis-4/6 flex-col gap-6"></div>
-      <div className=""></div>
-      <div></div>
+    <div className="flex flex-col items-center gap-4">
+      <Head>
+        <title>Blog | Stay Sane, Think Straight</title>
+      </Head>
+      {data.map((data) => (
+        <BlogPost
+          key={data.id}
+          id={data.id}
+          attributes={data.attributes}
+          isFull={false}
+          article={data.attributes.article}
+        />
+      ))}
     </div>
   );
 };

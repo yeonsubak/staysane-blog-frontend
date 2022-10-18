@@ -5,15 +5,6 @@ const nextConfig = {
   images: {
     domains: ["staysane-blog-storage.s3.ap-northeast-2.amazonaws.com"],
   },
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/post",
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;

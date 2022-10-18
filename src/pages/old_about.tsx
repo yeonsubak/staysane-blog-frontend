@@ -8,7 +8,7 @@ import Head from "next/head";
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await axios.get(
-    `https://strapi.staysane.me/api/about-me?populate=profileImg`
+    `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/about-me?populate=profileImg`
   );
   const { data }: GetAbout = await res.data;
   const article = await editorjsConverter(data.attributes.Body);
