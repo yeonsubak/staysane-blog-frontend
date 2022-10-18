@@ -44,43 +44,45 @@ export async function getHashtagList() {
 export async function getPostsByHashtag() {
   const { data } = await client.query({
     query: gql`
-    hashtags {
-      data {
-        id
-        attributes {
-          hashtag
-          posts {
-            data {
-              id
-              attributes {
-                title
-                article
-                author {
-                  data {
-                    attributes {
-                      name
-                      profileImg {
-                        data {
-                          attributes {
-                            alternativeText
-                            formats
+    {
+      hashtags {
+        data {
+          id
+          attributes {
+            hashtag
+            posts {
+              data {
+                id
+                attributes {
+                  title
+                  article
+                  coverImgBGColor
+                  readTime
+                  publishedAt
+                  author {
+                    data {
+                      attributes {
+                        name
+                        profileImg {
+                          data {
+                            attributes {
+                              alternativeText
+                              formats
+                            }
                           }
                         }
                       }
                     }
                   }
-                }
-                hashtags {
-                  data {
-                    id
-                    attributes {
-                      hashtag
+                  hashtags {
+                    data {
+                      id
+                      attributes {
+                        hashtag
+                      }
                     }
                   }
                 }
-                coverImgBGColor
-                readTime
-                publishedAt
               }
             }
           }
