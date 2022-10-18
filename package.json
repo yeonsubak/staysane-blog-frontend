@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint"
   },
@@ -20,6 +21,7 @@
     "hamburger-react": "^2.5.0",
     "html-react-parser": "^3.0.4",
     "next": "12.3.0",
+    "next-sitemap": "^3.1.28",
     "next-themes": "^0.2.1",
     "postcss": "^8.4.16",
     "react": "18.2.0",
