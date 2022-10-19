@@ -3,6 +3,7 @@ export interface IHashtagList {
   hashtag: string;
   count: number;
   id: number;
+  lastIdx: number;
 }
 
 export interface IHashtagMultiple {

@@ -1,4 +1,4 @@
-import { IHashtagAttr } from './../types/hashtag.type';
+import { IHashtagAttr } from "./../types/hashtag.type";
 import { gql } from "@apollo/client";
 import { IHashtagList } from "../types/hashtag.type";
 import client from "./apolloClient";
@@ -36,6 +36,7 @@ export async function getHashtagList() {
       hashtag: hashtagName,
       count: postCnt,
       id: hashtagId,
+      lastIdx: data.hashtags.data.length - 1,
     });
   });
 
@@ -105,7 +106,7 @@ export async function getPostsByHashtag(id: string | string[] | undefined) {
     `,
   });
 
-  const queryResult: IHashtagAttr[] = await data.hashtag.data
+  const queryResult: IHashtagAttr[] = await data.hashtag.data;
 
-  return queryResult
+  return queryResult;
 }
