@@ -1,5 +1,11 @@
-export default function colorLoop(state: string, idx: number, lastIdx: number) {
-  const expr = state;
+export interface IColorLoop {
+  idx: number;
+  lastIdx: number;
+  keywords: string[];
+}
+
+export default function colorLoop({ idx, lastIdx, keywords }: IColorLoop) {
+  const result: string[] = [];
   const iterator =
     idx > lastIdx ? idx - Math.floor(idx / lastIdx) * lastIdx : idx;
   const colors = [
@@ -11,15 +17,9 @@ export default function colorLoop(state: string, idx: number, lastIdx: number) {
     "amber-500",
   ];
 
-  const result = () => {
-    switch (expr) {
-      case "active":
-        return `text-white border-${colors[iterator]} bg-${colors[iterator]}`;
+  for (const keyword of keywords) {
+    result.push(`${keyword}-${colors[iterator]}`);
+  }
 
-      case "inactive":
-        return `text-${colors[iterator]} border-${colors[iterator]} bg-white`;
-    }
-  };
-
-  return result();
+  return result.join(" ");
 }

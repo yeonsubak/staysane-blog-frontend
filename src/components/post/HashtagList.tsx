@@ -16,11 +16,11 @@ const HashtagList = ({ hashtagList }: IPostIndex) => {
           <Link key={idx} href={`/hashtag/${id}`}>
             <button
               id={`${hashtag.toLowerCase()}`}
-              className={`rounded-full border px-4 py-2 ${colorLoop(
-                "active",
-                idx,
-                lastIdx
-              )}`}
+              className={`rounded-full border px-4 py-2 text-white ${colorLoop({
+                idx: idx,
+                lastIdx: lastIdx,
+                keywords: ["border", "bg"],
+              })}`}
             >
               {`#${hashtag} (${count})`}
             </button>
@@ -29,11 +29,11 @@ const HashtagList = ({ hashtagList }: IPostIndex) => {
           <Link key={idx} href={`/hashtag/${id}`}>
             <button
               id={`${hashtag.toLowerCase()}`}
-              className={`rounded-full border bg-white px-4 py-2 ${colorLoop(
-                "inactive",
-                idx,
-                lastIdx
-              )}`}
+              className={`rounded-full border bg-white px-4 py-2 ${colorLoop({
+                idx: idx,
+                lastIdx: lastIdx,
+                keywords: ["text", "border"],
+              })}`}
             >
               {`#${hashtag} (${count})`}
             </button>
