@@ -4,6 +4,13 @@ export interface IColorLoop {
   keywords: string[];
 }
 
+/**
+ * This function converts userinput keywords into a string of Tailwind CSS utilities w/ predefined color sets.
+ * @param {number} idx Index of an element in the given array.
+ * @param {lastIdx} lastIdx Last index of the array.
+ * @param {string[]} keywords Array of color-required Tailwind CSS utilities (e.g. text, border, bg)
+ * @returns {string} String of Tailwind CSS utilities (e.g. "text-pink-500 border-pink-500")
+ */
 export default function colorLoop({ idx, lastIdx, keywords }: IColorLoop) {
   const result: string[] = [];
   const iterator =
