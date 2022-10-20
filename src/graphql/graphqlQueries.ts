@@ -110,3 +110,23 @@ export async function getPostsByHashtag(id: string | string[] | undefined) {
 
   return queryResult;
 }
+
+export async function getPostView(id: number) {
+  const { data } = await client.query({
+    query: gql`
+      {
+        post(id: ${id}) {
+          data {
+            attributes {
+              view
+            }
+          }
+        }
+      }
+    `,
+  });
+
+  const result = data.post.data.attributes.view;
+
+  return result;
+}

@@ -2,51 +2,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { IPropsBlogPost } from "../../types/blog.type";
 import { ISinglePost } from "../../types/query.type";
-
 import parse from "html-react-parser";
 import Link from "next/link";
-
 import Image from "next/future/image";
-import { addZero } from "../../functions/utilityFunctions";
+import { stringifyDateTime } from "../../functions/utilityFunctions";
 import { dynamicCSS } from "./BlogPost.dynamicCSS";
 import { BookIcon, DateIcon, ViewIcon } from "../etc/IconComponents";
+import { getPostView } from "../../graphql/graphqlQueries";
 
-const BlogPost = (props: IPropsBlogPost) => {
-  const id = props.id;
-  const attributes = props.attributes;
-  const coverImg = attributes.coverImg.data;
-  const isFull = props.isFull;
-  const article = props.article
-    // configuration for custom layout inside lists.
-    .replaceAll("(edjs-code-block-open)", '<div class="edjs-code">')
-    .replaceAll("(edjs-code-block-end)", "</div>")
-    .replaceAll("(edjs-raw-open)", '<div class="edjs-raw">')
-    .replaceAll("(edjs-raw-end)", "</div>");
-  const parsedArticle = parse(article);
-
+const BlogPost = ({ id, attributes, isFull, article }: IPropsBlogPost) => {
   const [date, setDate] = useState<string>("");
   const [view, setView] = useState<number>(0);
 
+  const coverImg = attributes.coverImg.data;
+  const parsedArticle = parse(article);
+
   useEffect(() => {
-    // Convert datetime format
-    const dateTime = (date: string) => {
-      const dt = new Date(date);
-
-      return `${dt.getFullYear()}-${addZero(
-        (dt.getMonth() + 1).toString()
-      )}-${addZero(dt.getDate().toString())} ${addZero(
-        dt.getHours().toString()
-      )}:${addZero(dt.getMinutes().toString())}`;
-    };
-    setDate(dateTime(attributes.publishedAt));
-
-    axios
-      .get<ISinglePost>(
-        `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts/${id}`
-      )
-      .then(({ data }) => {
-        setView(data.data.attributes.view);
-      });
+    setDate(stringifyDateTime(attributes.publishedAt));
+    getPostView(id).then((id) => setView(id));
   }, [attributes.publishedAt, id]);
 
   return (
