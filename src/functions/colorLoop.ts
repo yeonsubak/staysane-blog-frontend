@@ -6,6 +6,7 @@ export interface IColorLoop {
 
 /**
  * This function converts userinput keywords into a string of Tailwind CSS utilities w/ predefined color sets.
+ * It's effective to use for implementing strict color scheme for rendering an unknown length of an array.
  * @param {number} idx Index of an element in the given array.
  * @param {lastIdx} lastIdx Last index of the array.
  * @param {string[]} keywords Array of color-required Tailwind CSS utilities (e.g. text, border, bg)
@@ -14,7 +15,7 @@ export interface IColorLoop {
 export default function colorLoop({ idx, lastIdx, keywords }: IColorLoop) {
   const result: string[] = [];
   const iterator =
-    idx > lastIdx ? idx - Math.floor(idx / lastIdx) * lastIdx : idx;
+    idx > lastIdx ? idx % lastIdx : idx;
   const colors = [
     "pink-500",
     "cyan-500",
