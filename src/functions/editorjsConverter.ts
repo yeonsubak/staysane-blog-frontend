@@ -1,4 +1,4 @@
-import { IEditorJSArticle } from './../types/edjs.type';
+import { IEditorJSArticle } from "./../types/edjs.type";
 
 export async function editorjsConverter(article: string) {
   let htmlArr: Array<string> = [];
@@ -98,5 +98,13 @@ export async function editorjsConverter(article: string) {
         htmlArr.push(`<div>Undefined block type: ${block.type}</div>`);
     }
   });
-  return htmlArr.join("");
+
+  const result = await htmlArr
+    .join("")
+    .replaceAll("(edjs-code-block-open)", '<div class="edjs-code">')
+    .replaceAll("(edjs-code-block-end)", "</div>")
+    .replaceAll("(edjs-raw-open)", '<div class="edjs-raw">')
+    .replaceAll("(edjs-raw-end)", "</div>");
+
+  return result;
 }
