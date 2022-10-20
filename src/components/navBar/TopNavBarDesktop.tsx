@@ -1,5 +1,5 @@
-import StaysaneLogo from "../../resources/img/StaysaneLogo";
 import Link from "next/link";
+import { StaysaneLogo } from "../etc/IconComponents";
 
 const TopNavBarDesktop = () => {
   return (

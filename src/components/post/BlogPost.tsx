@@ -7,9 +7,9 @@ import parse from "html-react-parser";
 import Link from "next/link";
 
 import Image from "next/future/image";
-import BookIcon from "../../resources/icons/BookIcon";
-import DateIcon from "../../resources/icons/DateIcon";
-import ViewIcon from "../../resources/icons/ViewIcon";
+import { addZero } from "../../functions/utilityFunctions";
+import { dynamicCSS } from "./BlogPost.dynamicCSS";
+import { BookIcon, DateIcon, ViewIcon } from "../etc/IconComponents";
 
 const BlogPost = (props: IPropsBlogPost) => {
   const id = props.id;
@@ -24,27 +24,8 @@ const BlogPost = (props: IPropsBlogPost) => {
     .replaceAll("(edjs-raw-end)", "</div>");
   const parsedArticle = parse(article);
 
-  const css = {
-    preview: {
-      postBox:
-        "mt-2 flex flex-col max-w-[768px] gap-2 sm:gap-6 bg-white px-6 pt-4 sm:py-9 sm:px-10 shadow-lg sm:min-w-[640px]",
-      coverImg: "h-16 w-auto object-contain object-center",
-      postHeaderBox: "flex flex-col items-center",
-    },
-    full: {
-      postBox:
-        "mt-2 px-6 py-9 flex flex-col gap-6 max-w-[768px] bg-white shadow-lg sm:min-w-[520px] sm:px-10",
-      coverImg: "h-32 w-auto object-contain object-center",
-      postHeaderBox: "flex flex-col items-center",
-    },
-  };
-
   const [date, setDate] = useState<string>("");
   const [view, setView] = useState<number>(0);
-
-  function addZero(datetime: string) {
-    return datetime.padStart(2, "0");
-  }
 
   useEffect(() => {
     // Convert datetime format
@@ -60,16 +41,24 @@ const BlogPost = (props: IPropsBlogPost) => {
     setDate(dateTime(attributes.publishedAt));
 
     axios
-      .get<ISinglePost>(`${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts/${id}`)
+      .get<ISinglePost>(
+        `${process.env.NEXT_PUBLIC_STRAPI_ENDPOINT}/api/posts/${id}`
+      )
       .then(({ data }) => {
         setView(data.data.attributes.view);
       });
   }, [attributes.publishedAt, id]);
 
   return (
-    <div className={isFull ? css.full.postBox : css.preview.postBox}>
+    <div
+      className={isFull ? dynamicCSS.full.postBox : dynamicCSS.preview.postBox}
+    >
       <div
-        className={isFull ? css.full.postHeaderBox : css.preview.postHeaderBox}
+        className={
+          isFull
+            ? dynamicCSS.full.postHeaderBox
+            : dynamicCSS.preview.postHeaderBox
+        }
       >
         <div
           className="flex w-full justify-center"
@@ -80,7 +69,9 @@ const BlogPost = (props: IPropsBlogPost) => {
               src={coverImg.attributes.url}
               width={coverImg.attributes.width}
               height={coverImg.attributes.height}
-              className={isFull ? css.full.coverImg : css.preview.coverImg}
+              className={
+                isFull ? dynamicCSS.full.coverImg : dynamicCSS.preview.coverImg
+              }
               alt={coverImg.attributes.alternativeText}
             />
           ) : (
@@ -88,7 +79,9 @@ const BlogPost = (props: IPropsBlogPost) => {
               src={coverImg.attributes.formats.small.url}
               width={coverImg.attributes.formats.small.width}
               height={coverImg.attributes.formats.small.height}
-              className={isFull ? css.full.coverImg : css.preview.coverImg}
+              className={
+                isFull ? dynamicCSS.full.coverImg : dynamicCSS.preview.coverImg
+              }
               alt={coverImg.attributes.alternativeText}
             />
           )}
